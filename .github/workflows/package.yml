@@ -1,0 +1,82 @@
+
+name: Test, Build and Push Python Package and Docs
+
+on:
+  push:
+    branches:
+      - main
+      - alpha
+      - beta
+      - "*.*.*"
+      - "*.*"
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest, ]
+        python-version: ["3.8", "3.9", "3.10", ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/install-dependencies
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: ./.github/actions/lint-and-test
+
+  collectTODO:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "actions/checkout@master"
+      - name: "TODO to Issue"
+        uses: "alstr/todo-to-issue-action@v4.3"
+        id: "todo"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies to build package
+        run: pip install --upgrade --upgrade-strategy eager setuptools wheel twine
+      - name: Semantic Release
+        id: semantic-release
+        uses: cycjimmy/semantic-release-action@v3
+        with:
+          extra_plugins: |
+            semantic-release-pypi
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_PASSWORD }}
+      - uses: ./.github/actions/install-dependencies
+        if: steps.semantic-release.outputs.new_release_published == 'true'
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Deploy docs
+        if: steps.semantic-release.outputs.new_release_published == 'true'
+        uses: ./.github/actions/build-and-deploy-docs
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+
+  coverage:
+    needs: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/install-dependencies
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run coverage and upload to Codecov.io
+        uses: ./.github/actions/test-coverage
+        with:
+          codecov-token: ${{ secrets.CODECOV_TOKEN }}

@@ -1,0 +1,60 @@
+
+name: Build and Push Docs
+
+on:
+  push:
+    paths:
+      - "docsrc/**"
+      - "README.md"
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/install-dependencies
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: ./.github/actions/lint-and-test
+
+  deploy:
+    needs: test
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/install-dependencies
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: ./.github/actions/build-and-deploy-docs
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+
+  coverage:
+    needs: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/install-dependencies
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run coverage and upload to Codecov.io
+        uses: ./.github/actions/test-coverage
+        with:
+          codecov-token: ${{ secrets.CODECOV_TOKEN }}

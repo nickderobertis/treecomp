@@ -14,7 +14,26 @@
   "applied_templates": [
     {
       "name": "copier-pypi-sphinx-flexlate",
-      "data": {},
+      "data": {
+        "package_name": "treecomp",
+        "package_directory": "treecomp",
+        "full_name": "treecomp",
+        "repo_name": "treecomp",
+        "repo_username": "nickderobertis",
+        "short_description": "Compare directory trees and output unified diff",
+        "main_branch_name": "main",
+        "package_author": "Nick DeRobertis",
+        "author_email": "derobertis.nick@gmail.com",
+        "google_analytics_id": "",
+        "os_support": [
+          "ubuntu",
+          "macos",
+          "windows"
+        ],
+        "minimum_python_version": "3.8",
+        "logo_url": "",
+        "install_packages": ""
+      },
       "version": "16bf49e10e3480584d66c81616913980001036ea",
       "add_mode": "local",
       "root": "."

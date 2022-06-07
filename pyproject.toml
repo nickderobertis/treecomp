@@ -1,0 +1,5 @@
+[tool.black]
+include = 'treecomp.*\.pyi?$|tests.*\.pyi?$'
+
+[tool.isort]
+profile = "black"
