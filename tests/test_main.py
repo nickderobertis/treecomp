@@ -33,4 +33,3 @@ def test_diff_file_trees():
     assert a_diff.diff.line_diff in str(comp)
     assert b_diff.diff.line_diff in str(comp)
     assert c_diff.diff.line_diff in str(comp)
-

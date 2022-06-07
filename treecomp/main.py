@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 from difflib import unified_diff
 from pathlib import Path
-from typing import Optional, Union, List, Set
+from typing import List, Optional, Set, Union
 
 
 @dataclass(frozen=True)
@@ -64,12 +64,18 @@ class FileTreeComparison:
     def diff_for(self, path: Union[str, Path]) -> Optional[FileDiffWithDirs]:
         for diff in self.diffs:
             diff_with_dirs = FileDiffWithDirs(diff=diff, dir1=self.dir1, dir2=self.dir2)
-            if Path(path) in [diff.path, diff_with_dirs.dir_1_path, diff_with_dirs.dir_2_path]:
+            if Path(path) in [
+                diff.path,
+                diff_with_dirs.dir_1_path,
+                diff_with_dirs.dir_2_path,
+            ]:
                 return diff_with_dirs
         return None
 
 
-def diff_file_trees(dir1: Union[str, Path], dir2: Union[str, Path]) -> FileTreeComparison:
+def diff_file_trees(
+    dir1: Union[str, Path], dir2: Union[str, Path]
+) -> FileTreeComparison:
     """
     Compare two folders recursively, returning diffs of files that have differing content
     """
@@ -162,7 +168,9 @@ def _diff_file_trees(
         new_dir1 = os.path.join(dir1, dir)
         new_dir2 = os.path.join(dir2, dir)
         new_relative_root = relative_root / dir
-        nested_result = _diff_file_trees(new_dir1, new_dir2, relative_root=new_relative_root)
+        nested_result = _diff_file_trees(
+            new_dir1, new_dir2, relative_root=new_relative_root
+        )
         file_diffs.extend(nested_result.file_diffs)
         could_not_diff.extend(nested_result.could_not_diff)
 
@@ -176,7 +184,10 @@ def _get_names_of_dirs_directly_in_dir(dir: Union[str, Path]) -> List[str]:
 
 
 def _create_unified_diff_of_files(
-    file1: Path, file2: Path, file_1_name: Optional[str] = None, file_2_name: Optional[str] = None
+    file1: Path,
+    file2: Path,
+    file_1_name: Optional[str] = None,
+    file_2_name: Optional[str] = None,
 ) -> Optional[str]:
     try:
         lines1 = file1.read_text().splitlines()
@@ -189,7 +200,9 @@ def _create_unified_diff_of_files(
 
     file_1_name = file_1_name or str(file1)
     file_2_name = file_2_name or str(file2)
-    diff = unified_diff(lines1, lines2, fromfile=file_1_name, tofile=file_2_name, lineterm="")
+    diff = unified_diff(
+        lines1, lines2, fromfile=file_1_name, tofile=file_2_name, lineterm=""
+    )
     return "\n".join(diff)
 
 
@@ -209,4 +222,3 @@ def _create_unified_diff_of_file_added(
 def _create_unified_diff_from_list(lines: List[str], file_name: str) -> str:
     diff = unified_diff([], lines, fromfile=file_name, tofile=file_name, lineterm="")
     return "\n".join(diff)
-
