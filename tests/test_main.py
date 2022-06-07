@@ -26,6 +26,26 @@ def test_diff_file_trees():
     assert c_diff.diff.line_diff in str(comp)
 
 
+def test_diff_file_tress_ignore_file():
+    comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["a.txt"])
+    assert len(comp.diffs) == 2
+    assert len(comp.could_not_diff) == 0
+    assert comp.dir1 == FILE_TREE_ONE
+    assert comp.dir2 == FILE_TREE_TWO
+
+    a_diff = comp.diff_for("a.txt")
+    assert a_diff is None
+
+    b_diff = comp.diff_for("b.txt")
+    _assert_b_diff_between_one_and_two_is_correct(b_diff)
+
+    c_diff = comp.diff_for("c.txt")
+    _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    assert b_diff.diff.line_diff in str(comp)
+    assert c_diff.diff.line_diff in str(comp)
+
+
 def _assert_a_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
     assert diff is not None
     assert diff.diff.exists_in_dir1 is True

@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 from difflib import unified_diff
 from pathlib import Path
-from typing import List, Optional, Set, Union
+from typing import List, Optional, Sequence, Set, Union
 
 
 @dataclass(frozen=True)
@@ -74,12 +74,17 @@ class FileTreeComparison:
 
 
 def diff_file_trees(
-    dir1: Union[str, Path], dir2: Union[str, Path]
+    dir1: Union[str, Path],
+    dir2: Union[str, Path],
+    ignore: Optional[Sequence[str]] = None,
+    include_default_ignores: bool = True,
 ) -> FileTreeComparison:
     """
     Compare two folders recursively, returning diffs of files that have differing content
     """
-    folder_diff_results = _diff_file_trees(dir1, dir2)
+    folder_diff_results = _diff_file_trees(
+        dir1, dir2, ignore=ignore, include_default_ignores=include_default_ignores
+    )
     return FileTreeComparison(
         dir1=Path(dir1),
         dir2=Path(dir2),
@@ -89,7 +94,11 @@ def diff_file_trees(
 
 
 def _diff_file_trees(
-    dir1: Union[str, Path], dir2: Union[str, Path], relative_root: Path = Path(".")
+    dir1: Union[str, Path],
+    dir2: Union[str, Path],
+    ignore: Optional[Sequence[str]] = None,
+    include_default_ignores: bool = True,
+    relative_root: Path = Path("."),
 ) -> _FolderDiffResults:
     file_diffs: List[FileDiff] = []
     could_not_diff: List[Path] = []
@@ -104,7 +113,10 @@ def _diff_file_trees(
     elif not dir2.exists():
         left_only = os.listdir(dir1)
     else:
-        dirs_cmp = filecmp.dircmp(dir1, dir2)
+        use_ignore = ignore or []
+        if include_default_ignores:
+            use_ignore.extend(filecmp.DEFAULT_IGNORES)
+        dirs_cmp = filecmp.dircmp(dir1, dir2, ignore=use_ignore)
         left_only = dirs_cmp.left_only
         right_only = dirs_cmp.right_only
         funny_files = dirs_cmp.funny_files
@@ -169,7 +181,11 @@ def _diff_file_trees(
         new_dir2 = os.path.join(dir2, dir)
         new_relative_root = relative_root / dir
         nested_result = _diff_file_trees(
-            new_dir1, new_dir2, relative_root=new_relative_root
+            new_dir1,
+            new_dir2,
+            ignore=ignore,
+            include_default_ignores=include_default_ignores,
+            relative_root=new_relative_root,
         )
         file_diffs.extend(nested_result.file_diffs)
         could_not_diff.extend(nested_result.could_not_diff)
