@@ -5,6 +5,10 @@ from difflib import unified_diff
 from pathlib import Path
 from typing import List, Optional, Sequence, Set, Union
 
+from treecomp.fs_utils import list_path_filter_by_matchers
+from treecomp.ignore import parse_ignore_list_into_matcher
+from treecomp.target import parse_target_list_into_matcher
+
 
 @dataclass(frozen=True)
 class FileDiff:
@@ -77,13 +81,16 @@ def diff_file_trees(
     dir1: Union[str, Path],
     dir2: Union[str, Path],
     ignore: Optional[Sequence[str]] = None,
-    include_default_ignores: bool = True,
+    target: Optional[Sequence[str]] = None,
 ) -> FileTreeComparison:
     """
     Compare two folders recursively, returning diffs of files that have differing content
     """
     folder_diff_results = _diff_file_trees(
-        dir1, dir2, ignore=ignore, include_default_ignores=include_default_ignores
+        dir1,
+        dir2,
+        ignore=ignore,
+        target=target,
     )
     return FileTreeComparison(
         dir1=Path(dir1),
@@ -97,30 +104,52 @@ def _diff_file_trees(
     dir1: Union[str, Path],
     dir2: Union[str, Path],
     ignore: Optional[Sequence[str]] = None,
-    include_default_ignores: bool = True,
+    target: Optional[Sequence[str]] = None,
     relative_root: Path = Path("."),
 ) -> _FolderDiffResults:
     file_diffs: List[FileDiff] = []
     could_not_diff: List[Path] = []
-    left_only: List[str] = []
-    right_only: List[str] = []
-    funny_files: List[str] = []
-    common_files: List[str] = []
+    left_only: Set[str] = set()
+    right_only: Set[str] = set()
+    common_files: Set[str] = set()
     dir1 = Path(dir1)
     dir2 = Path(dir2)
-    use_ignore = list(ignore) if ignore is not None else []
-    if include_default_ignores:
-        use_ignore.extend(filecmp.DEFAULT_IGNORES)
+    ignore_matcher = parse_ignore_list_into_matcher(ignore)
+    target_matcher = parse_target_list_into_matcher(target)
+
+    def _get_files(dir: Path) -> Set[str]:
+        return set(
+            list_path_filter_by_matchers(
+                dir,
+                ignore_matcher,
+                target_matcher,
+                include_dirs=False,
+                root=relative_root,
+            )
+        )
+
+    def _get_dirs(dir: Path) -> Set[str]:
+        return set(
+            list_path_filter_by_matchers(
+                dir,
+                ignore_matcher,
+                target_matcher,
+                include_files=False,
+                root=relative_root,
+            )
+        )
+
+    left_files = _get_files(dir1)
+    right_files = _get_files(dir2)
+
     if not dir1.exists():
-        right_only = os.listdir(dir2)
+        right_only = right_files
     elif not dir2.exists():
-        left_only = os.listdir(dir1)
+        left_only = left_files
     else:
-        dirs_cmp = filecmp.dircmp(dir1, dir2, ignore=use_ignore)
-        left_only = dirs_cmp.left_only
-        right_only = dirs_cmp.right_only
-        funny_files = dirs_cmp.funny_files
-        common_files = dirs_cmp.common_files
+        left_only = left_files - right_files
+        right_only = right_files - left_files
+        common_files = left_files & right_files
 
     # Handle files that are only in one of the directories
     if len(left_only) > 0:
@@ -150,10 +179,6 @@ def _diff_file_trees(
             ]
         )
 
-    # Handle files that are in both directories, but could not be diffed
-    if len(funny_files) > 0:
-        could_not_diff.extend([relative_root / file for file in funny_files])
-
     (_, mismatch, errors) = filecmp.cmpfiles(dir1, dir2, common_files, shallow=False)
     if len(mismatch) > 0:
         for file in mismatch:
@@ -173,8 +198,7 @@ def _diff_file_trees(
         could_not_diff.extend([relative_root / file for file in errors])
 
     # Find all directories at this level in both trees
-    all_dir_names: Set[str] = set(_get_names_of_dirs_directly_in_dir(dir1, use_ignore))
-    all_dir_names.update(_get_names_of_dirs_directly_in_dir(dir2, use_ignore))
+    all_dir_names: Set[str] = _get_dirs(dir1) | _get_dirs(dir2)
 
     for dir in all_dir_names:
         new_dir1 = os.path.join(dir1, dir)
@@ -184,27 +208,13 @@ def _diff_file_trees(
             new_dir1,
             new_dir2,
             ignore=ignore,
-            include_default_ignores=include_default_ignores,
+            target=target,
             relative_root=new_relative_root,
         )
         file_diffs.extend(nested_result.file_diffs)
         could_not_diff.extend(nested_result.could_not_diff)
 
     return _FolderDiffResults(file_diffs=file_diffs, could_not_diff=could_not_diff)
-
-
-def _get_names_of_dirs_directly_in_dir(
-    dir: Union[str, Path], ignore: Sequence[str] = tuple()
-) -> List[str]:
-    if not Path(dir).exists():
-        return []
-    # TODO: support globs and other more complicated ignore patterns like gitignore
-    #  May also be necessary to update the logic that is passing ignore to dircmp
-    return [
-        name
-        for name in os.listdir(dir)
-        if name not in ignore and os.path.isdir(os.path.join(dir, name))
-    ]
 
 
 def _create_unified_diff_of_files(

@@ -18,19 +18,21 @@ def cli_diff_file_trees(
         "--ignore",
         help="Paths to ignore. The flag can be passed multiple times to exclude multiple paths.",
     ),
-    exclude_default_ignores: bool = typer.Option(
-        False,
-        "-e",
-        "--exclude-default-ignores",
-        help="Exclude default ignores.",
-        show_default=False,
+    target: Optional[List[str]] = typer.Option(
+        None,
+        "-t",
+        "--target",
+        help="Paths to target. The flag can be passed multiple times to target multiple paths.",
     ),
 ):
     """
     Compare two directories and print a unified diff
     """
     comparison = diff_file_trees(
-        dir1, dir2, ignore=ignore, include_default_ignores=not exclude_default_ignores
+        dir1,
+        dir2,
+        ignore=ignore,
+        target=target,
     )
     print(comparison)
 
