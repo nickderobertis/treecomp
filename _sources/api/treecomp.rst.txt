@@ -17,10 +17,42 @@ treecomp.cli module
    :undoc-members:
    :show-inheritance:
 
+treecomp.fs\_utils module
+-------------------------
+
+.. automodule:: treecomp.fs_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+treecomp.ignore module
+----------------------
+
+.. automodule:: treecomp.ignore
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 treecomp.main module
 --------------------
 
 .. automodule:: treecomp.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+treecomp.path\_matcher module
+-----------------------------
+
+.. automodule:: treecomp.path_matcher
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+treecomp.target module
+----------------------
+
+.. automodule:: treecomp.target
    :members:
    :undoc-members:
    :show-inheritance:

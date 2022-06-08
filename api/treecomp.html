@@ -47,7 +47,7 @@
   
   
   
-    <title>treecomp package &#8212; treecomp 1.0.0a2 documentation</title>
+    <title>treecomp package &#8212; treecomp 1.0.0a3 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="treecomp 1.0.0a2 documentation"
+        <a href="../index.html" title="treecomp 1.0.0a3 documentation"
            class="md-header-nav__button md-logo">
           
             <i class="md-icon">&#xe869</i>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">treecomp 1.0.0a2 documentation</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">treecomp 1.0.0a3 documentation</a></li>
           <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">treecomp</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="treecomp 1.0.0a2 documentation" class="md-nav__button md-logo">
+    <a href="../index.html" title="treecomp 1.0.0a3 documentation" class="md-nav__button md-logo">
       
         <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../index.html"
-       title="treecomp 1.0.0a2 documentation">treecomp</a>
+       title="treecomp 1.0.0a3 documentation">treecomp</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/nickderobertis/treecomp" title="Go to repository" class="md-source" data-md-source="github">
@@ -253,7 +253,15 @@
         </li>
         <li class="md-nav__item"><a href="#module-treecomp.cli" class="md-nav__link">treecomp.cli module</a>
         </li>
+        <li class="md-nav__item"><a href="#module-treecomp.fs_utils" class="md-nav__link">treecomp.fs_utils module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.ignore" class="md-nav__link">treecomp.ignore module</a>
+        </li>
         <li class="md-nav__item"><a href="#module-treecomp.main" class="md-nav__link">treecomp.main module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.path_matcher" class="md-nav__link">treecomp.path_matcher module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.target" class="md-nav__link">treecomp.target module</a>
         </li></ul>
             </nav>
         </li>
@@ -280,7 +288,35 @@
     <li class="md-nav__item">
     
     
+      <a href="#module-treecomp.fs_utils" class="md-nav__link">treecomp.fs_utils module</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#module-treecomp.ignore" class="md-nav__link">treecomp.ignore module</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
       <a href="#module-treecomp.main" class="md-nav__link">treecomp.main module</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#module-treecomp.path_matcher" class="md-nav__link">treecomp.path_matcher module</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#module-treecomp.target" class="md-nav__link">treecomp.target module</a>
       
     
     </li></ul>
@@ -308,7 +344,15 @@
         </li>
         <li class="md-nav__item"><a href="#module-treecomp.cli" class="md-nav__link">treecomp.cli module</a>
         </li>
+        <li class="md-nav__item"><a href="#module-treecomp.fs_utils" class="md-nav__link">treecomp.fs_utils module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.ignore" class="md-nav__link">treecomp.ignore module</a>
+        </li>
         <li class="md-nav__item"><a href="#module-treecomp.main" class="md-nav__link">treecomp.main module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.path_matcher" class="md-nav__link">treecomp.path_matcher module</a>
+        </li>
+        <li class="md-nav__item"><a href="#module-treecomp.target" class="md-nav__link">treecomp.target module</a>
         </li></ul>
             </nav>
         </li>
@@ -336,8 +380,32 @@
 <span id="treecomp-cli-module"></span><h2 id="module-treecomp.cli">treecomp.cli module<a class="headerlink" href="#module-treecomp.cli" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="treecomp.cli.cli_diff_file_trees">
-<span class="sig-prename descclassname"><span class="pre">treecomp.cli.</span></span><span class="sig-name descname"><span class="pre">cli_diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_default_ignores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treecomp.cli.cli_diff_file_trees" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">treecomp.cli.</span></span><span class="sig-name descname"><span class="pre">cli_diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treecomp.cli.cli_diff_file_trees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two directories and print a unified diff</p>
+</dd></dl>
+</section>
+<section id="module-treecomp.fs_utils">
+<span id="treecomp-fs-utils-module"></span><h2 id="module-treecomp.fs_utils">treecomp.fs_utils module<a class="headerlink" href="#module-treecomp.fs_utils" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="treecomp.fs_utils.list_path_filter_by_matchers">
+<span class="sig-prename descclassname"><span class="pre">treecomp.fs_utils.</span></span><span class="sig-name descname"><span class="pre">list_path_filter_by_matchers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_matcher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_matcher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PosixPath('.')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/fs_utils.html#list_path_filter_by_matchers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.fs_utils.list_path_filter_by_matchers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-treecomp.ignore">
+<span id="treecomp-ignore-module"></span><h2 id="module-treecomp.ignore">treecomp.ignore module<a class="headerlink" href="#module-treecomp.ignore" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="treecomp.ignore.parse_ignore_list_into_matcher">
+<span class="sig-prename descclassname"><span class="pre">treecomp.ignore.</span></span><span class="sig-name descname"><span class="pre">parse_ignore_list_into_matcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/ignore.html#parse_ignore_list_into_matcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.ignore.parse_ignore_list_into_matcher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>[[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</p>
+</dd>
+</dl>
 </dd></dl>
 </section>
 <section id="module-treecomp.main">
@@ -452,11 +520,35 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="treecomp.main.diff_file_trees">
-<span class="sig-prename descclassname"><span class="pre">treecomp.main.</span></span><span class="sig-name descname"><span class="pre">diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_default_ignores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/main.html#diff_file_trees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.main.diff_file_trees" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">treecomp.main.</span></span><span class="sig-name descname"><span class="pre">diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/main.html#diff_file_trees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.main.diff_file_trees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two folders recursively, returning diffs of files that have differing content</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#treecomp.main.FileTreeComparison" title="treecomp.main.FileTreeComparison"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileTreeComparison</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-treecomp.path_matcher">
+<span id="treecomp-path-matcher-module"></span><h2 id="module-treecomp.path_matcher">treecomp.path_matcher module<a class="headerlink" href="#module-treecomp.path_matcher" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="treecomp.path_matcher.parse_list_into_file_matcher">
+<span class="sig-prename descclassname"><span class="pre">treecomp.path_matcher.</span></span><span class="sig-name descname"><span class="pre">parse_list_into_file_matcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/path_matcher.html#parse_list_into_file_matcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.path_matcher.parse_list_into_file_matcher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>[[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="module-treecomp.target">
+<span id="treecomp-target-module"></span><h2 id="module-treecomp.target">treecomp.target module<a class="headerlink" href="#module-treecomp.target" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="treecomp.target.parse_target_list_into_matcher">
+<span class="sig-prename descclassname"><span class="pre">treecomp.target.</span></span><span class="sig-name descname"><span class="pre">parse_target_list_into_matcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/target.html#parse_target_list_into_matcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.target.parse_target_list_into_matcher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>[[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>
