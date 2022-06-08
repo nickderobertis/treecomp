@@ -1,0 +1,19 @@
+treecomp package
+================
+
+.. automodule:: treecomp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+treecomp.main module
+--------------------
+
+.. automodule:: treecomp.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
