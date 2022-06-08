@@ -12,17 +12,17 @@ cli = typer.Typer()
 def cli_diff_file_trees(
     dir1: Path = typer.Argument(..., help="Path to the first directory to compare."),
     dir2: Path = typer.Argument(..., help="Path to the second directory to compare."),
-    ignore: Optional[List[str]] = typer.Option(
+    ignore: Optional[str] = typer.Option(
         None,
         "-i",
         "--ignore",
-        help="Paths to ignore. The flag can be passed multiple times to exclude multiple paths.",
+        help="Comma-separated paths to ignore. .gitignore-style syntax is supported.",
     ),
-    target: Optional[List[str]] = typer.Option(
+    target: Optional[str] = typer.Option(
         None,
         "-t",
         "--target",
-        help="Paths to target. The flag can be passed multiple times to target multiple paths.",
+        help="Comma-separated paths to target. .gitignore-style syntax is supported.",
     ),
 ):
     """
@@ -31,8 +31,8 @@ def cli_diff_file_trees(
     comparison = diff_file_trees(
         dir1,
         dir2,
-        ignore=ignore,
-        target=target,
+        ignore=ignore.split(",") if ignore else None,
+        target=target.split(",") if target else None,
     )
     print(comparison)
 
