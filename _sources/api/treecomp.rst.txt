@@ -9,6 +9,14 @@ treecomp package
 Submodules
 ----------
 
+treecomp.cli module
+-------------------
+
+.. automodule:: treecomp.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 treecomp.main module
 --------------------
 
