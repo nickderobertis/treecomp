@@ -159,7 +159,7 @@ def _diff_file_trees(
                     path=relative_root / file,
                     exists_in_dir1=True,
                     exists_in_dir2=False,
-                    line_diff=_create_unified_diff_of_file_added(dir1 / file),
+                    line_diff=_create_unified_diff_of_file_removed(dir1 / file),
                 )
                 for file in left_only
                 if (dir1 / file).is_file()
@@ -250,6 +250,19 @@ def _create_unified_diff_of_file_added(
 
     file_name = file_name or str(file)
     diff = unified_diff([], lines, fromfile=file_name, tofile=file_name, lineterm="")
+    return "\n".join(diff)
+
+
+def _create_unified_diff_of_file_removed(
+    file: Path, file_name: Optional[str] = None
+) -> Optional[str]:
+    try:
+        lines = file.read_text().splitlines()
+    except UnicodeDecodeError:
+        return None
+
+    file_name = file_name or str(file)
+    diff = unified_diff(lines, [], fromfile=file_name, tofile=file_name, lineterm="")
     return "\n".join(diff)
 
 

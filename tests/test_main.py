@@ -287,7 +287,7 @@ def _assert_b_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff is not None
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is False
-    assert "@@ -0,0 +1,2 @@\n+B\n+one" in diff.diff.line_diff
+    assert "@@ -1,2 +0,0 @@\n-B\n-one" in diff.diff.line_diff
     assert "b.txt" in diff.diff.line_diff
 
 
@@ -311,7 +311,7 @@ def _assert_e_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff is not None
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is False
-    assert "@@ -0,0 +1,2 @@\n+E\n+one" in diff.diff.line_diff
+    assert "@@ -1,2 +0,0 @@\n-E\n-one" in diff.diff.line_diff
     assert "e.txt" in diff.diff.line_diff
 
 
