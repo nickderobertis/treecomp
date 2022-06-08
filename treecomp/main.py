@@ -108,14 +108,14 @@ def _diff_file_trees(
     common_files: List[str] = []
     dir1 = Path(dir1)
     dir2 = Path(dir2)
+    use_ignore = list(ignore) if ignore is not None else []
+    if include_default_ignores:
+        use_ignore.extend(filecmp.DEFAULT_IGNORES)
     if not dir1.exists():
         right_only = os.listdir(dir2)
     elif not dir2.exists():
         left_only = os.listdir(dir1)
     else:
-        use_ignore = ignore or []
-        if include_default_ignores:
-            use_ignore.extend(filecmp.DEFAULT_IGNORES)
         dirs_cmp = filecmp.dircmp(dir1, dir2, ignore=use_ignore)
         left_only = dirs_cmp.left_only
         right_only = dirs_cmp.right_only
@@ -173,8 +173,8 @@ def _diff_file_trees(
         could_not_diff.extend([relative_root / file for file in errors])
 
     # Find all directories at this level in both trees
-    all_dir_names: Set[str] = set(_get_names_of_dirs_directly_in_dir(dir1))
-    all_dir_names.update(_get_names_of_dirs_directly_in_dir(dir2))
+    all_dir_names: Set[str] = set(_get_names_of_dirs_directly_in_dir(dir1, use_ignore))
+    all_dir_names.update(_get_names_of_dirs_directly_in_dir(dir2, use_ignore))
 
     for dir in all_dir_names:
         new_dir1 = os.path.join(dir1, dir)
@@ -193,10 +193,18 @@ def _diff_file_trees(
     return _FolderDiffResults(file_diffs=file_diffs, could_not_diff=could_not_diff)
 
 
-def _get_names_of_dirs_directly_in_dir(dir: Union[str, Path]) -> List[str]:
+def _get_names_of_dirs_directly_in_dir(
+    dir: Union[str, Path], ignore: Sequence[str] = tuple()
+) -> List[str]:
     if not Path(dir).exists():
         return []
-    return [name for name in os.listdir(dir) if os.path.isdir(os.path.join(dir, name))]
+    # TODO: support globs and other more complicated ignore patterns like gitignore
+    #  May also be necessary to update the logic that is passing ignore to dircmp
+    return [
+        name
+        for name in os.listdir(dir)
+        if name not in ignore and os.path.isdir(os.path.join(dir, name))
+    ]
 
 
 def _create_unified_diff_of_files(
