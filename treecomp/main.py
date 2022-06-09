@@ -1,8 +1,10 @@
 import filecmp
+import json
 import os
 from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
-from typing import List, Optional, Sequence, Set, Union
+from typing import Iterator, List, Optional, Sequence, Set, Union
 
 from treecomp.fs_utils import list_path_filter_by_matchers
 from treecomp.ignore import parse_ignore_list_into_matcher
@@ -21,6 +23,19 @@ class FileDiff:
     exists_in_dir1: bool
     exists_in_dir2: bool
     line_diff: str
+
+    def dict(self) -> dict:
+        raw = self.__dict__
+
+        def prepare_value(value: Union[Path, str, bool]) -> Union[str, bool]:
+            if isinstance(value, bool):
+                return value
+            return str(value)
+
+        return {k: prepare_value(v) for k, v in raw.items()}
+
+    def json(self, indent: Optional[int] = None) -> str:
+        return json.dumps(self.dict(), indent=indent)
 
 
 @dataclass(frozen=True)
@@ -52,6 +67,12 @@ class FileTreeComparison:
     def __str__(self) -> str:
         return "\n".join(diff.line_diff for diff in self.diffs)
 
+    def __iter__(self) -> Iterator[FileDiff]:
+        return iter(self.diffs)
+
+    def __getitem__(self, item) -> FileDiff:
+        return self.diffs[item]
+
     def diff_for(self, path: Union[str, Path]) -> Optional[FileDiff]:
         for diff in self.diffs:
             diff_with_dirs = _FileDiffWithDirs(
@@ -64,6 +85,9 @@ class FileTreeComparison:
             ]:
                 return diff
         return None
+
+    def json(self, indent: Optional[int] = None) -> str:
+        return json.dumps([diff.dict() for diff in self], indent=indent)
 
 
 def diff_file_trees(

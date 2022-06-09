@@ -1,3 +1,4 @@
+from enum import Enum
 from pathlib import Path
 from typing import Optional
 
@@ -6,6 +7,11 @@ import typer
 from treecomp import diff_file_trees
 
 cli = typer.Typer()
+
+
+class OutputFormat(str, Enum):
+    JSON = "json"
+    TEXT = "text"
 
 
 @cli.command()
@@ -24,6 +30,13 @@ def cli_diff_file_trees(
         "--target",
         help="Comma-separated paths to target. .gitignore-style syntax is supported.",
     ),
+    output_format: OutputFormat = typer.Option(
+        OutputFormat.TEXT,
+        "-f",
+        "--format",
+        help="Output format.",
+        show_choices=True,
+    ),
 ):
     """
     Compare two directories and print a unified diff
@@ -34,7 +47,10 @@ def cli_diff_file_trees(
         ignore=ignore.split(",") if ignore else None,
         target=target.split(",") if target else None,
     )
-    print(comparison)
+    if output_format == OutputFormat.JSON:
+        print(comparison.json())
+    else:
+        print(comparison)
 
 
 if __name__ == "__main__":
