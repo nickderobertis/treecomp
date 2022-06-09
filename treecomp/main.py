@@ -24,7 +24,7 @@ class FileDiff:
 
 
 @dataclass(frozen=True)
-class FileDiffWithDirs:
+class _FileDiffWithDirs:
     diff: FileDiff
     dir1: Path
     dir2: Path
@@ -36,13 +36,6 @@ class FileDiffWithDirs:
     @property
     def dir_2_path(self) -> Path:
         return self.dir2 / self.diff.path
-
-    @property
-    def diff_str(self) -> str:
-        """
-        Unified diff format output.
-        """
-        return self.diff.line_diff
 
 
 @dataclass(frozen=True)
@@ -57,20 +50,19 @@ class FileTreeComparison:
     diffs: List[FileDiff]
 
     def __str__(self) -> str:
-        return "\n".join(
-            FileDiffWithDirs(diff=file_diff, dir1=self.dir1, dir2=self.dir2).diff_str
-            for file_diff in self.diffs
-        )
+        return "\n".join(diff.line_diff for diff in self.diffs)
 
-    def diff_for(self, path: Union[str, Path]) -> Optional[FileDiffWithDirs]:
+    def diff_for(self, path: Union[str, Path]) -> Optional[FileDiff]:
         for diff in self.diffs:
-            diff_with_dirs = FileDiffWithDirs(diff=diff, dir1=self.dir1, dir2=self.dir2)
+            diff_with_dirs = _FileDiffWithDirs(
+                diff=diff, dir1=self.dir1, dir2=self.dir2
+            )
             if Path(path) in [
                 diff.path,
                 diff_with_dirs.dir_1_path,
                 diff_with_dirs.dir_2_path,
             ]:
-                return diff_with_dirs
+                return diff
         return None
 
 
