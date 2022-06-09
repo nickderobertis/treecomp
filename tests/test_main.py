@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Final, List, Optional, Sequence
 
 from tests.config import DIFF_IMAGE_NAME, FILE_TREE_ONE, FILE_TREE_TWO
+from tests.dirutils import join_path_segments_into_str
 from treecomp import diff_file_trees
 from treecomp.main import FileDiffWithDirs, FileTreeComparison
 
@@ -20,9 +21,9 @@ class E2ETestFile(str, Enum):
     A = "a.txt"
     B = "b.txt"
     C = "c.txt"
-    D = "directory/d.txt"
-    E = "directory/e.txt"
-    F = "directory/f.txt"
+    D = join_path_segments_into_str([E2ETestFolder.SUBDIRECTORY.value, "d.txt"])
+    E = join_path_segments_into_str([E2ETestFolder.SUBDIRECTORY.value, "e.txt"])
+    F = join_path_segments_into_str([E2ETestFolder.SUBDIRECTORY.value, "f.txt"])
     IMAGE = DIFF_IMAGE_NAME
     ADDED_IMAGE = "image-two-only.png"
     REMOVED_IMAGE = "image-one-only.png"
