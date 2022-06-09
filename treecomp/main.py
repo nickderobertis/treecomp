@@ -1,13 +1,18 @@
 import filecmp
 import os
 from dataclasses import dataclass
-from difflib import unified_diff
 from pathlib import Path
 from typing import List, Optional, Sequence, Set, Union
 
 from treecomp.fs_utils import list_path_filter_by_matchers
 from treecomp.ignore import parse_ignore_list_into_matcher
 from treecomp.target import parse_target_list_into_matcher
+from treecomp.unidiff import (
+    _create_unified_diff_of_binary_files,
+    _create_unified_diff_of_file_added,
+    _create_unified_diff_of_file_removed,
+    _create_unified_diff_of_files,
+)
 
 
 @dataclass(frozen=True)
@@ -37,13 +42,7 @@ class FileDiffWithDirs:
         """
         Unified diff format output.
         """
-        if self.diff.line_diff:
-            return self.diff.line_diff
-        else:
-            # File exists in both directories but there is no line diff, must be a binary file.
-            return _create_unified_diff_from_list(
-                ["binary file, cannot compare lines"], str(self.dir_2_path)
-            )
+        return self.diff.line_diff
 
 
 @dataclass(frozen=True)
@@ -222,67 +221,3 @@ def _diff_file_trees(
         file_diffs.extend(nested_result.file_diffs)
 
     return _FolderDiffResults(file_diffs=file_diffs)
-
-
-def _create_unified_diff_of_files(
-    file1: Path,
-    file2: Path,
-    file_1_name: Optional[str] = None,
-    file_2_name: Optional[str] = None,
-) -> str:
-    file_1_name = file_1_name or str(file1)
-    file_2_name = file_2_name or str(file2)
-
-    try:
-        lines1 = file1.read_text().splitlines()
-    except UnicodeDecodeError:
-        return _create_unified_diff_of_binary_files(file_1_name, file_2_name)
-    try:
-        lines2 = file2.read_text().splitlines()
-    except UnicodeDecodeError:
-        return _create_unified_diff_of_binary_files(file_1_name, file_2_name)
-
-    diff = unified_diff(
-        lines1, lines2, fromfile=file_1_name, tofile=file_2_name, lineterm=""
-    )
-    return "\n".join(diff)
-
-
-def _create_unified_diff_of_binary_files(
-    file_1_name: str,
-    file_2_name: str,
-) -> str:
-    return f"Binary files {file_1_name} and {file_2_name} differ"
-
-
-def _create_unified_diff_of_file_added(
-    file: Path, file_name: Optional[str] = None
-) -> str:
-    file_name = file_name or str(file)
-
-    try:
-        lines = file.read_text().splitlines()
-    except UnicodeDecodeError:
-        return _create_unified_diff_of_binary_files(file_name, file_name)
-
-    diff = unified_diff([], lines, fromfile=file_name, tofile=file_name, lineterm="")
-    return "\n".join(diff)
-
-
-def _create_unified_diff_of_file_removed(
-    file: Path, file_name: Optional[str] = None
-) -> str:
-    file_name = file_name or str(file)
-
-    try:
-        lines = file.read_text().splitlines()
-    except UnicodeDecodeError:
-        return _create_unified_diff_of_binary_files(file_name, file_name)
-
-    diff = unified_diff(lines, [], fromfile=file_name, tofile=file_name, lineterm="")
-    return "\n".join(diff)
-
-
-def _create_unified_diff_from_list(lines: List[str], file_name: str) -> str:
-    diff = unified_diff([], lines, fromfile=file_name, tofile=file_name, lineterm="")
-    return "\n".join(diff)
