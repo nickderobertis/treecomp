@@ -15,7 +15,7 @@ class FileDiff:
     path: Path
     exists_in_dir1: bool
     exists_in_dir2: bool
-    line_diff: Optional[str] = None
+    line_diff: str
 
 
 @dataclass(frozen=True)
@@ -49,7 +49,6 @@ class FileDiffWithDirs:
 @dataclass(frozen=True)
 class _FolderDiffResults:
     file_diffs: List[FileDiff]
-    could_not_diff: List[Path]
 
 
 @dataclass(frozen=True)
@@ -57,7 +56,6 @@ class FileTreeComparison:
     dir1: Path
     dir2: Path
     diffs: List[FileDiff]
-    could_not_diff: List[Path]
 
     def __str__(self) -> str:
         return "\n".join(
@@ -96,7 +94,6 @@ def diff_file_trees(
         dir1=Path(dir1),
         dir2=Path(dir2),
         diffs=folder_diff_results.file_diffs,
-        could_not_diff=folder_diff_results.could_not_diff,
     )
 
 
@@ -108,7 +105,6 @@ def _diff_file_trees(
     relative_root: Path = Path("."),
 ) -> _FolderDiffResults:
     file_diffs: List[FileDiff] = []
-    could_not_diff: List[Path] = []
     left_only: Set[str] = set()
     right_only: Set[str] = set()
     common_files: Set[str] = set()
@@ -195,7 +191,19 @@ def _diff_file_trees(
             )
 
     if len(errors) > 0:
-        could_not_diff.extend([relative_root / file for file in errors])
+        file_diffs.extend(
+            [
+                FileDiff(
+                    path=relative_root / file,
+                    exists_in_dir1=True,
+                    exists_in_dir2=True,
+                    line_diff=_create_unified_diff_of_binary_files(
+                        str(dir2 / file), str(dir2 / file)
+                    ),
+                )
+                for file in errors
+            ]
+        )
 
     # Find all directories at this level in both trees
     all_dir_names: Set[str] = _get_dirs(dir1) | _get_dirs(dir2)
@@ -212,9 +220,8 @@ def _diff_file_trees(
             relative_root=new_relative_root,
         )
         file_diffs.extend(nested_result.file_diffs)
-        could_not_diff.extend(nested_result.could_not_diff)
 
-    return _FolderDiffResults(file_diffs=file_diffs, could_not_diff=could_not_diff)
+    return _FolderDiffResults(file_diffs=file_diffs)
 
 
 def _create_unified_diff_of_files(
@@ -223,21 +230,29 @@ def _create_unified_diff_of_files(
     file_1_name: Optional[str] = None,
     file_2_name: Optional[str] = None,
 ) -> Optional[str]:
+    file_1_name = file_1_name or str(file1)
+    file_2_name = file_2_name or str(file2)
+
     try:
         lines1 = file1.read_text().splitlines()
     except UnicodeDecodeError:
-        return None
+        return _create_unified_diff_of_binary_files(file_1_name, file_2_name)
     try:
         lines2 = file2.read_text().splitlines()
     except UnicodeDecodeError:
-        return None
+        return _create_unified_diff_of_binary_files(file_1_name, file_2_name)
 
-    file_1_name = file_1_name or str(file1)
-    file_2_name = file_2_name or str(file2)
     diff = unified_diff(
         lines1, lines2, fromfile=file_1_name, tofile=file_2_name, lineterm=""
     )
     return "\n".join(diff)
+
+
+def _create_unified_diff_of_binary_files(
+    file_1_name: str,
+    file_2_name: str,
+) -> str:
+    return f"Binary files {file_1_name} and {file_2_name} differ"
 
 
 def _create_unified_diff_of_file_added(

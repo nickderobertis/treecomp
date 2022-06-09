@@ -1,14 +1,13 @@
 from typing import Optional
 
-from tests.config import FILE_TREE_ONE, FILE_TREE_TWO
+from tests.config import DIFF_IMAGE_NAME, FILE_TREE_ONE, FILE_TREE_TWO
 from treecomp import diff_file_trees
 from treecomp.main import FileDiffWithDirs
 
 
 def test_diff_file_trees():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO)
-    assert len(comp.diffs) == 6
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 7
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -20,6 +19,9 @@ def test_diff_file_trees():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     _assert_d_diff_between_one_and_two_is_correct(d_diff)
@@ -40,8 +42,7 @@ def test_diff_file_trees():
 
 def test_diff_file_trees_ignore_file():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["a.txt", "e.txt"])
-    assert len(comp.diffs) == 4
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 5
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -53,6 +54,9 @@ def test_diff_file_trees_ignore_file():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     _assert_d_diff_between_one_and_two_is_correct(d_diff)
@@ -71,8 +75,7 @@ def test_diff_file_trees_ignore_file():
 
 def test_diff_file_trees_ignore_directory():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory"])
-    assert len(comp.diffs) == 3
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 4
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -84,6 +87,9 @@ def test_diff_file_trees_ignore_directory():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     assert d_diff is None
@@ -101,16 +107,18 @@ def test_diff_file_trees_ignore_directory():
 
 def test_diff_file_trees_ignore_glob_file_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["*.txt"])
-    assert len(comp.diffs) == 0
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 1
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
+
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
 
 def test_diff_file_trees_ignore_glob_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/*"])
-    assert len(comp.diffs) == 3
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 4
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -122,6 +130,9 @@ def test_diff_file_trees_ignore_glob_folder_patterns():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     assert d_diff is None
@@ -140,7 +151,6 @@ def test_diff_file_trees_ignore_glob_folder_patterns():
 def test_diff_file_trees_target_files():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["a.txt"])
     assert len(comp.diffs) == 1
-    assert len(comp.could_not_diff) == 0
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -153,7 +163,6 @@ def test_diff_file_trees_target_files():
 def test_diff_file_trees_target_folders():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory"])
     assert len(comp.diffs) == 3
-    assert len(comp.could_not_diff) == 0
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -174,7 +183,6 @@ def test_diff_file_trees_target_folders():
 def test_diff_file_trees_target_file_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["a.*"])
     assert len(comp.diffs) == 1
-    assert len(comp.could_not_diff) == 0
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -187,7 +195,6 @@ def test_diff_file_trees_target_file_patterns():
 def test_diff_file_trees_target_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory/*"])
     assert len(comp.diffs) == 3
-    assert len(comp.could_not_diff) == 0
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -209,8 +216,7 @@ def test_diff_file_trees_ignore_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == 6
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 7
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -222,6 +228,9 @@ def test_diff_file_trees_ignore_with_negation():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     _assert_d_diff_between_one_and_two_is_correct(d_diff)
@@ -244,8 +253,7 @@ def test_diff_file_trees_target_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == 6
-    assert len(comp.could_not_diff) == 0
+    assert len(comp.diffs) == 7
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -257,6 +265,9 @@ def test_diff_file_trees_target_with_negation():
 
     c_diff = comp.diff_for("c.txt")
     _assert_c_diff_between_one_and_two_is_correct(c_diff)
+
+    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
+    _assert_image_diff_between_one_and_two_is_correct(img_diff)
 
     d_diff = comp.diff_for("directory/d.txt")
     _assert_d_diff_between_one_and_two_is_correct(d_diff)
@@ -321,3 +332,11 @@ def _assert_f_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir2 is True
     assert "@@ -0,0 +1,2 @@\n+F\n+two" in diff.diff.line_diff
     assert "f.txt" in diff.diff.line_diff
+
+
+def _assert_image_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
+    assert diff is not None
+    assert diff.diff.exists_in_dir1 is True
+    assert diff.diff.exists_in_dir2 is True
+    assert "Binary files" in diff.diff.line_diff
+    assert DIFF_IMAGE_NAME in diff.diff.line_diff
