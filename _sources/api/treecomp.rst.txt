@@ -57,3 +57,11 @@ treecomp.target module
    :undoc-members:
    :show-inheritance:
 
+treecomp.unidiff module
+-----------------------
+
+.. automodule:: treecomp.unidiff
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
