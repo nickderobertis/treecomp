@@ -229,7 +229,7 @@ def _create_unified_diff_of_files(
     file2: Path,
     file_1_name: Optional[str] = None,
     file_2_name: Optional[str] = None,
-) -> Optional[str]:
+) -> str:
     file_1_name = file_1_name or str(file1)
     file_2_name = file_2_name or str(file2)
 
@@ -257,26 +257,28 @@ def _create_unified_diff_of_binary_files(
 
 def _create_unified_diff_of_file_added(
     file: Path, file_name: Optional[str] = None
-) -> Optional[str]:
+) -> str:
+    file_name = file_name or str(file)
+
     try:
         lines = file.read_text().splitlines()
     except UnicodeDecodeError:
-        return None
+        return _create_unified_diff_of_binary_files(file_name, file_name)
 
-    file_name = file_name or str(file)
     diff = unified_diff([], lines, fromfile=file_name, tofile=file_name, lineterm="")
     return "\n".join(diff)
 
 
 def _create_unified_diff_of_file_removed(
     file: Path, file_name: Optional[str] = None
-) -> Optional[str]:
+) -> str:
+    file_name = file_name or str(file)
+
     try:
         lines = file.read_text().splitlines()
     except UnicodeDecodeError:
-        return None
+        return _create_unified_diff_of_binary_files(file_name, file_name)
 
-    file_name = file_name or str(file)
     diff = unified_diff(lines, [], fromfile=file_name, tofile=file_name, lineterm="")
     return "\n".join(diff)
 

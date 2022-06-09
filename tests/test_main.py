@@ -5,9 +5,9 @@ from tests.config import DIFF_IMAGE_NAME, FILE_TREE_ONE, FILE_TREE_TWO
 from treecomp import diff_file_trees
 from treecomp.main import FileDiffWithDirs, FileTreeComparison
 
-NUM_MAIN_DIRECTORY_DIFFS: Final[int] = 4
+NUM_MAIN_DIRECTORY_DIFFS: Final[int] = 6
 NUM_SUBDIRECTORY_DIFFS: Final[int] = 3
-NUM_NON_TEXT_DIFFS: Final[int] = 1
+NUM_NON_TEXT_DIFFS: Final[int] = 3
 ALL_DIFFS: Final[int] = NUM_MAIN_DIRECTORY_DIFFS + NUM_SUBDIRECTORY_DIFFS
 
 
@@ -24,6 +24,8 @@ class E2ETestFile(str, Enum):
     E = "directory/e.txt"
     F = "directory/f.txt"
     IMAGE = DIFF_IMAGE_NAME
+    ADDED_IMAGE = "image-two-only.png"
+    REMOVED_IMAGE = "image-one-only.png"
 
     @property
     def folder(self) -> E2ETestFolder:
@@ -48,6 +50,10 @@ class E2ETestFile(str, Enum):
             _assert_f_diff_between_one_and_two_is_correct(diff)
         elif self == E2ETestFile.IMAGE:
             _assert_image_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.ADDED_IMAGE:
+            _assert_image_added_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.REMOVED_IMAGE:
+            _assert_image_removed_between_one_and_two_is_correct(diff)
         else:
             raise NotImplementedError(f"{self} has no diff assertion function")
 
@@ -191,7 +197,7 @@ def _assert_a_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is True
     assert "@@ -1,2 +1,2 @@\n A\n-one\n+two" in diff.diff.line_diff
-    assert "a.txt" in diff.diff.line_diff
+    assert E2ETestFile.A.value in diff.diff.line_diff
 
 
 def _assert_b_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -199,7 +205,7 @@ def _assert_b_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is False
     assert "@@ -1,2 +0,0 @@\n-B\n-one" in diff.diff.line_diff
-    assert "b.txt" in diff.diff.line_diff
+    assert E2ETestFile.B.value in diff.diff.line_diff
 
 
 def _assert_c_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -207,7 +213,7 @@ def _assert_c_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is False
     assert diff.diff.exists_in_dir2 is True
     assert "@@ -0,0 +1,2 @@\n+C\n+two" in diff.diff.line_diff
-    assert "c.txt" in diff.diff.line_diff
+    assert E2ETestFile.C.value in diff.diff.line_diff
 
 
 def _assert_d_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -215,7 +221,7 @@ def _assert_d_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is True
     assert "@@ -1,2 +1,2 @@\n D\n-one\n+two" in diff.diff.line_diff
-    assert "d.txt" in diff.diff.line_diff
+    assert E2ETestFile.D.value in diff.diff.line_diff
 
 
 def _assert_e_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -223,7 +229,7 @@ def _assert_e_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is False
     assert "@@ -1,2 +0,0 @@\n-E\n-one" in diff.diff.line_diff
-    assert "e.txt" in diff.diff.line_diff
+    assert E2ETestFile.E.value in diff.diff.line_diff
 
 
 def _assert_f_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -231,7 +237,7 @@ def _assert_f_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDir
     assert diff.diff.exists_in_dir1 is False
     assert diff.diff.exists_in_dir2 is True
     assert "@@ -0,0 +1,2 @@\n+F\n+two" in diff.diff.line_diff
-    assert "f.txt" in diff.diff.line_diff
+    assert E2ETestFile.F.value in diff.diff.line_diff
 
 
 def _assert_image_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
@@ -239,4 +245,26 @@ def _assert_image_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWit
     assert diff.diff.exists_in_dir1 is True
     assert diff.diff.exists_in_dir2 is True
     assert "Binary files" in diff.diff.line_diff
-    assert DIFF_IMAGE_NAME in diff.diff.line_diff
+    assert E2ETestFile.IMAGE.value in diff.diff.line_diff
+
+
+def _assert_image_removed_between_one_and_two_is_correct(
+    diff: Optional[FileDiffWithDirs],
+):
+    assert diff is not None
+    assert diff.diff.exists_in_dir1 is True
+    assert diff.diff.exists_in_dir2 is False
+    assert "Binary files" in diff.diff.line_diff
+    assert E2ETestFile.REMOVED_IMAGE.value in diff.diff.line_diff
+    assert "one" in diff.diff.line_diff
+
+
+def _assert_image_added_between_one_and_two_is_correct(
+    diff: Optional[FileDiffWithDirs],
+):
+    assert diff is not None
+    assert diff.diff.exists_in_dir1 is False
+    assert diff.diff.exists_in_dir2 is True
+    assert "Binary files" in diff.diff.line_diff
+    assert E2ETestFile.ADDED_IMAGE.value in diff.diff.line_diff
+    assert "two" in diff.diff.line_diff
