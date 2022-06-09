@@ -1,113 +1,96 @@
-from typing import Optional
+from enum import Enum
+from typing import Final, List, Optional, Sequence
 
 from tests.config import DIFF_IMAGE_NAME, FILE_TREE_ONE, FILE_TREE_TWO
 from treecomp import diff_file_trees
-from treecomp.main import FileDiffWithDirs
+from treecomp.main import FileDiffWithDirs, FileTreeComparison
+
+NUM_MAIN_DIRECTORY_DIFFS: Final[int] = 4
+NUM_SUBDIRECTORY_DIFFS: Final[int] = 3
+NUM_NON_TEXT_DIFFS: Final[int] = 1
+ALL_DIFFS: Final[int] = NUM_MAIN_DIRECTORY_DIFFS + NUM_SUBDIRECTORY_DIFFS
+
+
+class E2ETestFolder(str, Enum):
+    MAIN = ""
+    SUBDIRECTORY = "directory"
+
+
+class E2ETestFile(str, Enum):
+    A = "a.txt"
+    B = "b.txt"
+    C = "c.txt"
+    D = "directory/d.txt"
+    E = "directory/e.txt"
+    F = "directory/f.txt"
+    IMAGE = DIFF_IMAGE_NAME
+
+    @property
+    def folder(self) -> E2ETestFolder:
+        return (
+            E2ETestFolder.SUBDIRECTORY
+            if self.value.startswith("directory/")
+            else E2ETestFolder.MAIN
+        )
+
+    def assert_diff_is_correct(self, diff: FileDiffWithDirs) -> None:
+        if self == E2ETestFile.A:
+            _assert_a_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.B:
+            _assert_b_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.C:
+            _assert_c_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.D:
+            _assert_d_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.E:
+            _assert_e_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.F:
+            _assert_f_diff_between_one_and_two_is_correct(diff)
+        elif self == E2ETestFile.IMAGE:
+            _assert_image_diff_between_one_and_two_is_correct(diff)
+        else:
+            raise NotImplementedError(f"{self} has no diff assertion function")
+
+
+MAIN_FOLDER_E2E_FILES: Final[List[E2ETestFile]] = [
+    file for file in E2ETestFile if file.folder == E2ETestFolder.MAIN
+]
+SUBDIRECTORY_E2E_FILES: Final[List[E2ETestFile]] = [
+    file for file in E2ETestFile if file.folder == E2ETestFolder.SUBDIRECTORY
+]
+ALL_E2E_FILES: Final[List[E2ETestFile]] = MAIN_FOLDER_E2E_FILES + SUBDIRECTORY_E2E_FILES
 
 
 def test_diff_file_trees():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO)
-    assert len(comp.diffs) == 7
+    assert len(comp.diffs) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    _assert_a_diff_between_one_and_two_is_correct(a_diff)
-
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
-
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
-
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    _assert_e_diff_between_one_and_two_is_correct(e_diff)
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert a_diff.diff.line_diff in str(comp)
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
-    assert d_diff.diff.line_diff in str(comp)
-    assert e_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp)
 
 
 def test_diff_file_trees_ignore_file():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["a.txt", "e.txt"])
-    assert len(comp.diffs) == 5
+    assert len(comp.diffs) == ALL_DIFFS - 2
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    assert a_diff is None
-
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
-
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
-
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    assert e_diff is None
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
-    assert d_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp, exclude=(E2ETestFile.A, E2ETestFile.E))
 
 
 def test_diff_file_trees_ignore_directory():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory"])
-    assert len(comp.diffs) == 4
+    assert len(comp.diffs) == NUM_MAIN_DIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    _assert_a_diff_between_one_and_two_is_correct(a_diff)
-
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
-
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
-
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    assert d_diff is None
-
-    e_diff = comp.diff_for("directory/e.txt")
-    assert e_diff is None
-
-    f_diff = comp.diff_for("directory/f.txt")
-    assert f_diff is None
-
-    assert a_diff.diff.line_diff in str(comp)
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp, exclude=SUBDIRECTORY_E2E_FILES)
 
 
 def test_diff_file_trees_ignore_glob_file_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["*.txt"])
-    assert len(comp.diffs) == 1
+    assert len(comp.diffs) == NUM_NON_TEXT_DIFFS
 
     img_diff = comp.diff_for(DIFF_IMAGE_NAME)
     _assert_image_diff_between_one_and_two_is_correct(img_diff)
@@ -118,34 +101,11 @@ def test_diff_file_trees_ignore_glob_file_patterns():
 
 def test_diff_file_trees_ignore_glob_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/*"])
-    assert len(comp.diffs) == 4
+    assert len(comp.diffs) == NUM_MAIN_DIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    _assert_a_diff_between_one_and_two_is_correct(a_diff)
-
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
-
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
-
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    assert d_diff is None
-
-    e_diff = comp.diff_for("directory/e.txt")
-    assert e_diff is None
-
-    f_diff = comp.diff_for("directory/f.txt")
-    assert f_diff is None
-
-    assert a_diff.diff.line_diff in str(comp)
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp, exclude=SUBDIRECTORY_E2E_FILES)
 
 
 def test_diff_file_trees_target_files():
@@ -162,22 +122,11 @@ def test_diff_file_trees_target_files():
 
 def test_diff_file_trees_target_folders():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory"])
-    assert len(comp.diffs) == 3
+    assert len(comp.diffs) == NUM_SUBDIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    _assert_e_diff_between_one_and_two_is_correct(e_diff)
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert d_diff.diff.line_diff in str(comp)
-    assert e_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp, exclude=MAIN_FOLDER_E2E_FILES)
 
 
 def test_diff_file_trees_target_file_patterns():
@@ -194,96 +143,47 @@ def test_diff_file_trees_target_file_patterns():
 
 def test_diff_file_trees_target_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory/*"])
-    assert len(comp.diffs) == 3
+    assert len(comp.diffs) == NUM_SUBDIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    _assert_e_diff_between_one_and_two_is_correct(e_diff)
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert d_diff.diff.line_diff in str(comp)
-    assert e_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp, exclude=MAIN_FOLDER_E2E_FILES)
 
 
 def test_diff_file_trees_ignore_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == 7
+    assert len(comp.diffs) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    _assert_a_diff_between_one_and_two_is_correct(a_diff)
-
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
-
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
-
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    _assert_e_diff_between_one_and_two_is_correct(e_diff)
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert a_diff.diff.line_diff in str(comp)
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
-    assert d_diff.diff.line_diff in str(comp)
-    assert e_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    _assert_diffs_are_correct(comp)
 
 
 def test_diff_file_trees_target_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == 7
+    assert len(comp.diffs) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
-    a_diff = comp.diff_for("a.txt")
-    _assert_a_diff_between_one_and_two_is_correct(a_diff)
+    _assert_diffs_are_correct(comp)
 
-    b_diff = comp.diff_for("b.txt")
-    _assert_b_diff_between_one_and_two_is_correct(b_diff)
 
-    c_diff = comp.diff_for("c.txt")
-    _assert_c_diff_between_one_and_two_is_correct(c_diff)
+def _assert_diffs_are_correct(
+    comp: FileTreeComparison, exclude: Sequence[E2ETestFile] = tuple()
+):
+    comp_str = str(comp)
 
-    img_diff = comp.diff_for(DIFF_IMAGE_NAME)
-    _assert_image_diff_between_one_and_two_is_correct(img_diff)
-
-    d_diff = comp.diff_for("directory/d.txt")
-    _assert_d_diff_between_one_and_two_is_correct(d_diff)
-
-    e_diff = comp.diff_for("directory/e.txt")
-    _assert_e_diff_between_one_and_two_is_correct(e_diff)
-
-    f_diff = comp.diff_for("directory/f.txt")
-    _assert_f_diff_between_one_and_two_is_correct(f_diff)
-
-    assert a_diff.diff.line_diff in str(comp)
-    assert b_diff.diff.line_diff in str(comp)
-    assert c_diff.diff.line_diff in str(comp)
-    assert d_diff.diff.line_diff in str(comp)
-    assert e_diff.diff.line_diff in str(comp)
-    assert f_diff.diff.line_diff in str(comp)
+    for e2e_file in ALL_E2E_FILES:
+        diff = comp.diff_for(e2e_file.value)
+        if e2e_file in exclude:
+            assert diff is None
+        else:
+            e2e_file.assert_diff_is_correct(diff)
+            assert diff.diff.line_diff in comp_str
 
 
 def _assert_a_diff_between_one_and_two_is_correct(diff: Optional[FileDiffWithDirs]):
