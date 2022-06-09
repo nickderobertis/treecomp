@@ -2,7 +2,6 @@ import filecmp
 import json
 import os
 from dataclasses import dataclass
-from enum import Enum
 from pathlib import Path
 from typing import Iterator, List, Optional, Sequence, Set, Union
 
