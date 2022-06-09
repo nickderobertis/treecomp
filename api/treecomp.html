@@ -47,7 +47,7 @@
   
   
   
-    <title>treecomp package &#8212; treecomp 1.0.0a4 documentation</title>
+    <title>treecomp package &#8212; treecomp 1.0.0a5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -90,7 +90,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="treecomp 1.0.0a4 documentation"
+        <a href="../index.html" title="treecomp 1.0.0a5 documentation"
            class="md-header-nav__button md-logo">
           
             <i class="md-icon">&#xe869</i>
@@ -176,7 +176,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">treecomp 1.0.0a4 documentation</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">treecomp 1.0.0a5 documentation</a></li>
           <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">treecomp</a></li>
       </ul>
     </div>
@@ -189,13 +189,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="treecomp 1.0.0a4 documentation" class="md-nav__button md-logo">
+    <a href="../index.html" title="treecomp 1.0.0a5 documentation" class="md-nav__button md-logo">
       
         <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../index.html"
-       title="treecomp 1.0.0a4 documentation">treecomp</a>
+       title="treecomp 1.0.0a5 documentation">treecomp</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/nickderobertis/treecomp" title="Go to repository" class="md-source" data-md-source="github">
@@ -389,9 +389,23 @@
 </section>
 <section id="module-treecomp.cli">
 <span id="treecomp-cli-module"></span><h2 id="module-treecomp.cli">treecomp.cli module<a class="headerlink" href="#module-treecomp.cli" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="treecomp.cli.OutputFormat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">treecomp.cli.</span></span><span class="sig-name descname"><span class="pre">OutputFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/cli.html#OutputFormat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.cli.OutputFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="treecomp.cli.OutputFormat.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'json'</span></em><a class="headerlink" href="#treecomp.cli.OutputFormat.JSON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="treecomp.cli.OutputFormat.TEXT">
+<span class="sig-name descname"><span class="pre">TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text'</span></em><a class="headerlink" href="#treecomp.cli.OutputFormat.TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="treecomp.cli.cli_diff_file_trees">
-<span class="sig-prename descclassname"><span class="pre">treecomp.cli.</span></span><span class="sig-name descname"><span class="pre">cli_diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treecomp.cli.cli_diff_file_trees" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">treecomp.cli.</span></span><span class="sig-name descname"><span class="pre">cli_diff_file_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Argument</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typer.Option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treecomp.cli.cli_diff_file_trees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare two directories and print a unified diff</p>
 </dd></dl>
 </section>
@@ -429,6 +443,15 @@
 <dt class="sig sig-object py" id="treecomp.main.FileDiff.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exists_in_dir1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exists_in_dir2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_diff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#treecomp.main.FileDiff.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="treecomp.main.FileDiff.dict">
+<span class="sig-name descname"><span class="pre">dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/main.html#FileDiff.dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.main.FileDiff.dict" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#treecomp.main.FileDiff.dict" title="treecomp.main.FileDiff.dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="treecomp.main.FileDiff.exists_in_dir1">
 <span class="sig-name descname"><span class="pre">exists_in_dir1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#treecomp.main.FileDiff.exists_in_dir1" title="Permalink to this definition">¶</a></dt>
@@ -437,6 +460,15 @@
 <dt class="sig sig-object py" id="treecomp.main.FileDiff.exists_in_dir2">
 <span class="sig-name descname"><span class="pre">exists_in_dir2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#treecomp.main.FileDiff.exists_in_dir2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="treecomp.main.FileDiff.json">
+<span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/main.html#FileDiff.json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.main.FileDiff.json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="treecomp.main.FileDiff.line_diff">
 <span class="sig-name descname"><span class="pre">line_diff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#treecomp.main.FileDiff.line_diff" title="Permalink to this definition">¶</a></dt>
@@ -475,6 +507,15 @@
 <dt class="sig sig-object py" id="treecomp.main.FileTreeComparison.dir2">
 <span class="sig-name descname"><span class="pre">dir2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.10)"><span class="pre">Path</span></a></em><a class="headerlink" href="#treecomp.main.FileTreeComparison.dir2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="treecomp.main.FileTreeComparison.json">
+<span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/treecomp/main.html#FileTreeComparison.json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#treecomp.main.FileTreeComparison.json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="treecomp.main.diff_file_trees">
