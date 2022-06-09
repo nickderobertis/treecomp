@@ -23,7 +23,7 @@ import sys
 import datetime
 import warnings
 
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath("../.."))
 import conf
 import version as vs
 from docsrc.directives.auto_summary import AutoSummaryNameOnly
@@ -42,43 +42,44 @@ _package_version = vs.get_version()
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx_autodoc_typehints',
-    'sphinx_paramlinks',
-    'sphinx_material',
-    'sphinx_gallery.gen_gallery',
-    'sphinx_copybutton',
-    'myst_parser',
+    "sphinx.ext.todo",
+    "sphinx.ext.coverage",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.ifconfig",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.doctest",
+    "sphinx.ext.intersphinx",
+    "sphinx_autodoc_typehints",
+    "sphinx_paramlinks",
+    "sphinx_material",
+    "sphinx_gallery.gen_gallery",
+    "sphinx_copybutton",
+    "myst_parser",
+    "sphinx_terminhtml",
 ]
 
 # Options for sphinx_autodoc_typehints
 set_type_checking_flag = False
 
 # Options for sphinx.ext.autosummary
-autodoc_default_flags = ['members']
+autodoc_default_flags = ["members"]
 autosummary_generate = True
 autodoc_mock_imports = conf.PACKAGE_INSTALL_REQUIRES + conf.DOCS_OTHER_MOCK_IMPORTS
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-source_suffix = ['.rst', '.md']
+source_suffix = [".rst", ".md"]
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General information about the project.
 project = conf.PACKAGE_NAME
-copyright = f'{datetime.datetime.now().year}, {conf.PACKAGE_AUTHOR}'
+copyright = f"{datetime.datetime.now().year}, {conf.PACKAGE_AUTHOR}"
 author = conf.PACKAGE_AUTHOR
 
 # The version info for the project you're documenting, acts as replacement for
@@ -100,56 +101,59 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['**.ipynb_checkpoints']
+exclude_patterns = ["**.ipynb_checkpoints"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'default'
+pygments_style = "default"
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
 # Base URL for sitemap
-html_baseurl = conf.PACKAGE_URLS['Documentation'] + '/'
+html_baseurl = conf.PACKAGE_URLS["Documentation"] + "/"
 
 sphinx_gallery_conf = {
-    'examples_dirs': '../../_examples',   # path to your example scripts
-    'gallery_dirs': 'auto_examples',  # path to where to save gallery generated output
-    'filename_pattern': '/',  # re to match examples .py files that should be run to generate output. Set as / for all
-    'reference_url': {
+    "examples_dirs": "../../_examples",  # path to your example scripts
+    "gallery_dirs": "auto_examples",  # path to where to save gallery generated output
+    "filename_pattern": "/",  # re to match examples .py files that should be run to generate output. Set as / for all
+    "reference_url": {
         # The module you locally document uses None
-        'sphinx_gallery': None,
+        "sphinx_gallery": None,
     },
-    'binder': {
-         # Required keys
-         'org': conf.REPO_USERNAME,
-         'repo': conf.REPO_NAME,
-         'branch': 'gh-pages',  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
-         'binderhub_url': 'https://mybinder.org',  # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
-         'dependencies': './binder/requirements.txt',
-         # Optional keys
-         # 'filepath_prefix': '<prefix>', # A prefix to prepend to any filepaths in Binder links.
-         # 'notebooks_dir': '<notebooks-directory-name>', # Jupyter notebooks for Binder will be copied to this directory (relative to built documentation root).
-         'use_jupyter_lab': True, # Whether Binder links should start Jupyter Lab instead of the Jupyter Notebook interface.
-     }
+    "binder": {
+        # Required keys
+        "org": conf.REPO_USERNAME,
+        "repo": conf.REPO_NAME,
+        "branch": "gh-pages",  # Can be any branch, tag, or commit hash. Use a branch that hosts your docs.
+        "binderhub_url": "https://mybinder.org",  # Any URL of a binderhub deployment. Must be full URL (e.g. https://mybinder.org).
+        "dependencies": "./binder/requirements.txt",
+        # Optional keys
+        # 'filepath_prefix': '<prefix>', # A prefix to prepend to any filepaths in Binder links.
+        # 'notebooks_dir': '<notebooks-directory-name>', # Jupyter notebooks for Binder will be copied to this directory (relative to built documentation root).
+        "use_jupyter_lab": True,  # Whether Binder links should start Jupyter Lab instead of the Jupyter Notebook interface.
+    },
 }
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'matplotlib': ('https://matplotlib.org', None)
+    "python": ("https://docs.python.org/3", None),
+    "numpy": ("https://docs.scipy.org/doc/numpy/", None),
+    "matplotlib": ("https://matplotlib.org", None),
 }
 
 # Remove matplotlib agg warnings from generated doc when using plt.show
-warnings.filterwarnings("ignore", category=UserWarning,
-                        message='Matplotlib is currently using agg, which is a'
-                                ' non-GUI backend, so cannot show the figure.')
+warnings.filterwarnings(
+    "ignore",
+    category=UserWarning,
+    message="Matplotlib is currently using agg, which is a"
+    " non-GUI backend, so cannot show the figure.",
+)
 
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_material'
+html_theme = "sphinx_material"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -157,21 +161,21 @@ html_theme = 'sphinx_material'
 #
 html_theme_options = dict(
     nav_title=project,
-    base_url=conf.PACKAGE_URLS['Documentation'],
-    color_primary='indigo',
-    color_accent='deep-purple',
-    logo_icon='&#xe869',
-    repo_url=conf.PACKAGE_URLS['Code'],
+    base_url=conf.PACKAGE_URLS["Documentation"],
+    color_primary="indigo",
+    color_accent="deep-purple",
+    logo_icon="&#xe869",
+    repo_url=conf.PACKAGE_URLS["Code"],
     repo_name=conf.REPO_NAME,
     globaltoc_depth=3,
 )
 if conf.GOOGLE_ANALYTICS_TRACKING_ID:
-    html_theme_options['google_analytics_account'] = conf.GOOGLE_ANALYTICS_TRACKING_ID
+    html_theme_options["google_analytics_account"] = conf.GOOGLE_ANALYTICS_TRACKING_ID
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -179,9 +183,7 @@ html_static_path = ['_static']
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
-    '**': [
-        "logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"
-    ]
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
 
 # The name of an image file (relative to this directory) to place at the top
@@ -204,7 +206,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'helpdoc'
+htmlhelp_basename = "helpdoc"
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -213,15 +215,12 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     # 'papersize': 'letterpaper',
-
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -231,8 +230,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, f'{conf.PACKAGE_NAME}.tex', f'{conf.PACKAGE_NAME} Documentation',
-     conf.PACKAGE_AUTHOR, 'manual'),
+    (
+        master_doc,
+        f"{conf.PACKAGE_NAME}.tex",
+        f"{conf.PACKAGE_NAME} Documentation",
+        conf.PACKAGE_AUTHOR,
+        "manual",
+    ),
 ]
 
 
@@ -241,8 +245,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, conf.PACKAGE_NAME, f'{conf.PACKAGE_NAME} Documentation',
-     [author], 1)
+    (master_doc, conf.PACKAGE_NAME, f"{conf.PACKAGE_NAME} Documentation", [author], 1)
 ]
 
 
@@ -252,9 +255,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, conf.PACKAGE_NAME, f'{conf.PACKAGE_NAME} Documentation',
-     author, conf.PACKAGE_NAME, conf.PACKAGE_SHORT_DESCRIPTION,
-     'Miscellaneous'),
+    (
+        master_doc,
+        conf.PACKAGE_NAME,
+        f"{conf.PACKAGE_NAME} Documentation",
+        author,
+        conf.PACKAGE_NAME,
+        conf.PACKAGE_SHORT_DESCRIPTION,
+        "Miscellaneous",
+    ),
 ]
 
 
@@ -266,4 +275,4 @@ def skip(app, what, name, obj, would_skip, options):
 
 def setup(app):
     app.connect("autodoc-skip-member", skip)
-    app.add_directive('autosummarynameonly', AutoSummaryNameOnly)
+    app.add_directive("autosummarynameonly", AutoSummaryNameOnly)

@@ -11,6 +11,8 @@ runs:
       shell: bash
       run: |
         sudo apt-get install pandoc -y
+        sudo apt-get install jq -y
+        pipx install dunk
     - name: Build Documentation
       shell: bash
       run: |
