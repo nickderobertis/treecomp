@@ -32,7 +32,7 @@ class E2ETestFile(str, Enum):
     def folder(self) -> E2ETestFolder:
         return (
             E2ETestFolder.SUBDIRECTORY
-            if self.value.startswith("directory/")
+            if self.value.startswith("directory")
             else E2ETestFolder.MAIN
         )
 
