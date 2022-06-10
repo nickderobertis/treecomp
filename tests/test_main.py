@@ -70,7 +70,7 @@ ALL_E2E_FILES: Final[List[E2ETestFile]] = MAIN_FOLDER_E2E_FILES + SUBDIRECTORY_E
 
 def test_diff_file_trees():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO)
-    assert len(comp.diffs) == ALL_DIFFS
+    assert len(comp.diffs) == len(comp) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -79,7 +79,7 @@ def test_diff_file_trees():
 
 def test_diff_file_trees_ignore_file():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["a.txt", "e.txt"])
-    assert len(comp.diffs) == ALL_DIFFS - 2
+    assert len(comp.diffs) == len(comp) == ALL_DIFFS - 2
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -88,7 +88,7 @@ def test_diff_file_trees_ignore_file():
 
 def test_diff_file_trees_ignore_directory():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory"])
-    assert len(comp.diffs) == NUM_MAIN_DIRECTORY_DIFFS
+    assert len(comp.diffs) == len(comp) == NUM_MAIN_DIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -97,7 +97,7 @@ def test_diff_file_trees_ignore_directory():
 
 def test_diff_file_trees_ignore_glob_file_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["*.txt"])
-    assert len(comp.diffs) == NUM_NON_TEXT_DIFFS
+    assert len(comp.diffs) == len(comp) == NUM_NON_TEXT_DIFFS
 
     img_diff = comp.diff_for(DIFF_IMAGE_NAME)
     _assert_image_diff_between_one_and_two_is_correct(img_diff)
@@ -108,7 +108,7 @@ def test_diff_file_trees_ignore_glob_file_patterns():
 
 def test_diff_file_trees_ignore_glob_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/*"])
-    assert len(comp.diffs) == NUM_MAIN_DIRECTORY_DIFFS
+    assert len(comp.diffs) == len(comp) == NUM_MAIN_DIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -117,7 +117,7 @@ def test_diff_file_trees_ignore_glob_folder_patterns():
 
 def test_diff_file_trees_target_files():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["a.txt"])
-    assert len(comp.diffs) == 1
+    assert len(comp.diffs) == len(comp) == 1
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -129,7 +129,7 @@ def test_diff_file_trees_target_files():
 
 def test_diff_file_trees_target_folders():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory"])
-    assert len(comp.diffs) == NUM_SUBDIRECTORY_DIFFS
+    assert len(comp.diffs) == len(comp) == NUM_SUBDIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -138,7 +138,7 @@ def test_diff_file_trees_target_folders():
 
 def test_diff_file_trees_target_file_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["a.*"])
-    assert len(comp.diffs) == 1
+    assert len(comp.diffs) == len(comp) == 1
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -150,7 +150,7 @@ def test_diff_file_trees_target_file_patterns():
 
 def test_diff_file_trees_target_folder_patterns():
     comp = diff_file_trees(FILE_TREE_ONE, FILE_TREE_TWO, target=["directory/*"])
-    assert len(comp.diffs) == NUM_SUBDIRECTORY_DIFFS
+    assert len(comp.diffs) == len(comp) == NUM_SUBDIRECTORY_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -161,7 +161,7 @@ def test_diff_file_trees_ignore_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == ALL_DIFFS
+    assert len(comp.diffs) == len(comp) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 
@@ -172,7 +172,7 @@ def test_diff_file_trees_target_with_negation():
     comp = diff_file_trees(
         FILE_TREE_ONE, FILE_TREE_TWO, ignore=["directory/", "!directory/"]
     )
-    assert len(comp.diffs) == ALL_DIFFS
+    assert len(comp.diffs) == len(comp) == ALL_DIFFS
     assert comp.dir1 == FILE_TREE_ONE
     assert comp.dir2 == FILE_TREE_TWO
 

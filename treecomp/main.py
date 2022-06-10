@@ -72,6 +72,9 @@ class FileTreeComparison:
     def __getitem__(self, item) -> FileDiff:
         return self.diffs[item]
 
+    def __len__(self) -> int:
+        return len(self.diffs)
+
     def diff_for(self, path: Union[str, Path]) -> Optional[FileDiff]:
         for diff in self.diffs:
             diff_with_dirs = _FileDiffWithDirs(
