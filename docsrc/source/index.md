@@ -46,9 +46,6 @@ cwd: ..
 treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -f json | jq '.[].path'
 ```
 
-```{include} ../../README.md
-```
-
 ```{toctree}
 
 tutorial
