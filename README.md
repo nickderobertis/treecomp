@@ -14,27 +14,47 @@
 
 ## Overview
 
-Compare directory trees and output unified diff
+A CLI and Python API to recursively compare directory trees and output a unified diff. 
+Supports ignoring and targeting file and folder patterns with 
+[`.gitignore`-style syntax](https://git-scm.com/docs/gitignore#_pattern_format).
+Plays well with other tools: pipe output to [`dunk`](https://github.com/darrenburns/dunk) for pretty diffs and use 
+`-f json` to output to JSON for use with [`jq`](https://stedolan.github.io/jq/) and other tools.
 
 ## Getting Started
 
-Install `treecomp`:
+The recommended way to install `treecomp` is with [`pipx`](https://github.com/pypa/pipx),
+though it can also be installed with `pip`.
 
 ```
-pip install treecomp
+pipx install flexlate
 ```
 
-A simple example:
+Or, if you don't have/don't want to install `pipx`:
 
-```python
-import treecomp
-
-# Do something with treecomp
+```
+pip install flexlate
 ```
 
-See a
-[more in-depth tutorial here.](
-https://nickderobertis.github.io/treecomp/tutorial.html
+The unidiff output from this tool is best viewed using [`dunk`](https://github.com/darrenburns/dunk), 
+which can also be installed via `pipx`/`pip`.
+
+```shell
+pipx install dunk
+```
+
+Compare two file trees recursively and output unified diffs.
+
+```shell
+treecomp my_folder_1 my_folder_2 | dunk
+```
+
+It supports ignoring and targeting patterns with 
+[`.gitignore`-style syntax.](https://git-scm.com/docs/gitignore#_pattern_format) 
+It also has a strongly-typed Python API.
+
+See 
+[examples in the documentation.](
+https://nickderobertis.github.io/treecomp/index.html#examples
 )
 
 ## Development Status

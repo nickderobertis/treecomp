@@ -15,11 +15,13 @@ treecomp file_trees/one file_trees/two | dunk
 ```{include} ../../README.md
 ```
 
-For more information on getting started, take a look at the tutorial and examples.
+For more information on getting started, take a look at the examples.
 
-## Tutorial and Examples
+## Examples
 
-Ignore files with comma-separated gitignore-style syntax:
+### CLI
+
+Ignore files with comma-separated [`.gitignore`-style syntax](https://git-scm.com/docs/gitignore#_pattern_format):
 
 ```{terminhtml}
 ---
@@ -28,7 +30,7 @@ cwd: ..
 treecomp file_trees/one file_trees/two -i code,*.png | dunk
 ```
 
-Target files with the same comma-separated gitignore-style syntax:
+Target files with the same comma-separated [`.gitignore`-style syntax](https://git-scm.com/docs/gitignore#_pattern_format):
 
 ```{terminhtml}
 ---
@@ -37,7 +39,7 @@ cwd: ..
 treecomp file_trees/one file_trees/two -t *.py,image-two-only.png | dunk
 ```
 
-Output to JSON for use with `jq` and other tools. Here, we select 
+Output to JSON for use with [`jq`](https://stedolan.github.io/jq/) and other tools. Here, we select 
 the relative path of all the files that differ:
 
 ```{terminhtml}
@@ -79,11 +81,24 @@ cwd: ..
 treecomp file_trees/one file_trees/two -f json | jq -sr '.[] | map(select(.left).diff) | join("\n")' | dunk
 ```
 
+### Python API
 
-```{toctree}
+You can also use `treecomp` as a Python module, with a very similar API:
 
-tutorial
-auto_examples/index
+```python
+import treecomp
+
+comp = treecomp.diff_file_trees(
+    "file_trees/one", 
+    "file_trees/two", 
+    ignore=["subdir"], 
+    target=["*.py"]
+)
+print(len(comp), "diffs in total")
+for diff in comp:
+    if diff.left:
+        print("Files with diffs that exist in left:")
+        print(diff.path)
 ```
 
 ## API Documentation
