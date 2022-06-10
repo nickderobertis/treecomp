@@ -47,7 +47,7 @@
   
   
   
-    <title>Welcome to treecomp documentation! &#8212; treecomp 1.0.0a7 documentation</title>
+    <title>Welcome to treecomp documentation! &#8212; treecomp 1.0.0a8 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/material.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -69,7 +69,7 @@
     <link rel="canonical" href="https://nickderobertis.github.io/treecomp/index.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting started with treecomp" href="tutorial.html" />
+    <link rel="next" title="treecomp" href="api/modules.html" />
   
    
 
@@ -93,7 +93,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="#" title="treecomp 1.0.0a7 documentation"
+        <a href="#" title="treecomp 1.0.0a8 documentation"
            class="md-header-nav__button md-logo">
           
             <i class="md-icon">&#xe869</i>
@@ -179,7 +179,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="#" class="md-tabs__link">treecomp 1.0.0a7 documentation</a></li>
+          <li class="md-tabs__item"><a href="#" class="md-tabs__link">treecomp 1.0.0a8 documentation</a></li>
       </ul>
     </div>
   </nav>
@@ -191,13 +191,13 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="#" title="treecomp 1.0.0a7 documentation" class="md-nav__button md-logo">
+    <a href="#" title="treecomp 1.0.0a8 documentation" class="md-nav__button md-logo">
       
         <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="#"
-       title="treecomp 1.0.0a7 documentation">treecomp</a>
+       title="treecomp 1.0.0a8 documentation">treecomp</a>
   </label>
     <div class="md-nav__source">
       <a href="https://github.com/nickderobertis/treecomp" title="Go to repository" class="md-source" data-md-source="github">
@@ -218,20 +218,6 @@
 
   
   <ul class="md-nav__list">
-    <li class="md-nav__item">
-    
-    
-      <a href="tutorial.html" class="md-nav__link">Getting started with treecomp</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="auto_examples/index.html" class="md-nav__link">This is my gallery</a>
-      
-    
-    </li>
     <li class="md-nav__item">
     
     
@@ -269,23 +255,13 @@
         </li>
         <li class="md-nav__item"><a href="#links" class="md-nav__link">Links</a>
         </li>
-        <li class="md-nav__item"><a href="#tutorial-and-examples" class="md-nav__link">Tutorial and Examples</a>
+        <li class="md-nav__item"><a href="#examples" class="md-nav__link">Examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#cli" class="md-nav__link">CLI</a>
+        </li>
+        <li class="md-nav__item"><a href="#python-api" class="md-nav__link">Python API</a>
         </li></ul>
             </nav>
-        </li>
-        <li class="md-nav__item"><a href="#id1" class="md-nav__link">treecomp</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">Overview</a>
-        </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Getting Started</a>
-        </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">Development Status</a>
-        </li>
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">Developing</a>
-        </li>
-        <li class="md-nav__item"><a href="#id6" class="md-nav__link">Author</a>
-        </li>
-        <li class="md-nav__item"><a href="#id7" class="md-nav__link">Links</a>
         </li>
         <li class="md-nav__item"><a href="#api-documentation" class="md-nav__link">API Documentation</a>
         </li>
@@ -310,58 +286,53 @@
   <section id="welcome-to-treecomp-documentation">
 <h1 id="index--page-root">Welcome to treecomp documentation!<a class="headerlink" href="#index--page-root" title="Permalink to this heading">¶</a></h1>
 <pre class="terminhtml">
-    <span data-ty="" data-ty-delay="120">$ treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two | dunk</span>
-<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi34">5</span><span class="ansi34"> files changed</span>                                 </span>
-<span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi32">2</span><span class="ansi32"> files added</span>                                  </span>
-<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi31">2</span><span class="ansi31"> files removed</span>                                 </span>
-<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+6 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-6</span>                             </span>
+    <span data-ty="" data-ty-delay="135">$ treecomp file_trees/one file_trees/two | dunk</span>
+<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi34">4</span><span class="ansi34"> files changed</span>                                 </span>
+<span data-ty="" data-ty-delay="0">                                  <span class="ansi1 ansi32">1</span><span class="ansi32"> file added</span>                                  </span>
+<span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi31">1</span><span class="ansi31"> file removed</span>                                 </span>
+<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+8 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-8</span>                             </span>
 <span data-ty="" data-ty-delay="0"></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁ </span><span class="ansi1">tests/input_files/file_trees/one/image-one-only.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removal…</span><span class="ansi38-237"> ▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi34"> File is binary · 11352 bytes </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/one/b.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">2</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/one/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">5</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="63"><span class="ansi38-237">▁▁▁▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">tests/input_files/file_trees/two/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">2</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">C</span><span class="ansi48-59">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁ </span><span class="ansi1">tests/input_files/file_trees/two/image-two-only.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removal…</span><span class="ansi38-237"> ▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/image-two-only.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi34"> File is binary · 11352 bytes </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/diff-image.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi34"> File is binary · 441147 bytes </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="69"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">file_trees/two/d.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">5</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">a text file in two only</span><span class="ansi48-59">             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">lorem ipsum dolor sit amet, consecte</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi48-59">sed do eiusmod tempor incididunt ut </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">4 </span><span class="ansi48-59">Ut enim ad minim veniam, quis nostru</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">5 </span><span class="ansi48-59">nisi ut aliquip ex ea commodo conseq</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/a.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="37"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/a.py</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-222 ansi48-59">o</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="19"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/b.js</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">6</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">6</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-102 ansi48-235">// This is the documentation</span><span class="ansi48-235">        </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-102 ansi48-235">// This is the documentation</span><span class="ansi48-235">        </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">3 </span><span class="ansi38-102 ansi48-59">// for b in o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi48-59">                     </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi38-102 ansi48-59">// for b in </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-102 ansi48-59">o</span><span class="ansi48-59">                     </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi38-117 ansi48-235">function</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">b</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-231 ansi48-235">{</span><span class="ansi48-235">                      </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi38-117 ansi48-235">function</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">b</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-231 ansi48-235">{</span><span class="ansi48-235">                      </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">  </span><span class="ansi38-149 ansi48-235">console</span><span class="ansi38-231 ansi48-235">.</span><span class="ansi38-149 ansi48-235">log</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">'b'</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">;</span><span class="ansi48-235">                 </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">  </span><span class="ansi38-149 ansi48-235">console</span><span class="ansi38-231 ansi48-235">.</span><span class="ansi38-149 ansi48-235">log</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">'b'</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">;</span><span class="ansi48-235">                 </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">6 </span><span class="ansi38-231 ansi48-235">}</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">6 </span><span class="ansi38-231 ansi48-235">}</span><span class="ansi48-235">                                   </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="14"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/subdir/e.ts</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">2 </span><span class="ansi48-59">one</span><span class="ansi48-59">                                 </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">1 </span><span class="ansi38-102 ansi48-59">// Defined in folder o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi48-59">            </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi38-102 ansi48-59">// Defined in folder </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-102 ansi48-59">o</span><span class="ansi48-59">            </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-117 ansi48-235">type</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">EType</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-204 ansi48-235">=</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-222 ansi48-235">"E"</span><span class="ansi48-235">                    </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-117 ansi48-235">type</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">EType</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-204 ansi48-235">=</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-222 ansi48-235">"E"</span><span class="ansi48-235">                    </span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/one/directory/e.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">2</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">tests/input_files/file_trees/two/directory/f.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">2</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> remo…</span><span class="ansi38-237"> ▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">F</span><span class="ansi48-59">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/directory/d.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">D</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">D</span><span class="ansi48-235">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">2 </span><span class="ansi48-59">one</span><span class="ansi48-59">                                 </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="22">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
+<span data-ty="" data-ty-delay="20">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
 <span data-ty="" data-ty-delay="0"></span>
 </pre><p><a class="reference external" href="https://codecov.io/gh/nickderobertis/treecomp"><img alt="" src="https://codecov.io/gh/nickderobertis/treecomp/branch/main/graph/badge.svg"/></a>
 <a class="reference external" href="https://pypi.org/project/treecomp/"><img alt="PyPI" src="https://img.shields.io/pypi/v/treecomp"/></a>
@@ -376,22 +347,37 @@
 <h1 id="treecomp">treecomp<a class="headerlink" href="#treecomp" title="Permalink to this heading">¶</a></h1>
 <section id="overview">
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
-<p>Compare directory trees and output unified diff</p>
+<p>A CLI and Python API to recursively compare directory trees and output a unified diff.
+Supports ignoring and targeting file and folder patterns with
+<a class="reference external" href="https://git-scm.com/docs/gitignore#_pattern_format"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-style syntax</a>.
+Plays well with other tools: pipe output to <a class="reference external" href="https://github.com/darrenburns/dunk"><code class="docutils literal notranslate"><span class="pre">dunk</span></code></a> for pretty diffs and use
+<code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">json</span></code> to output to JSON for use with <a class="reference external" href="https://stedolan.github.io/jq/"><code class="docutils literal notranslate"><span class="pre">jq</span></code></a> and other tools.</p>
 </section>
 <section id="getting-started">
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">treecomp</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">treecomp</span>
+<p>The recommended way to install <code class="docutils literal notranslate"><span class="pre">treecomp</span></code> is with <a class="reference external" href="https://github.com/pypa/pipx"><code class="docutils literal notranslate"><span class="pre">pipx</span></code></a>,
+though it can also be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipx</span> <span class="n">install</span> <span class="n">flexlate</span>
 </pre></div>
 </div>
-<p>A simple example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">treecomp</span>
-
-<span class="c1"># Do something with treecomp</span>
+<p>Or, if you don’t have/don’t want to install <code class="docutils literal notranslate"><span class="pre">pipx</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">flexlate</span>
 </pre></div>
 </div>
-<p>See a
-<a class="reference external" href="https://nickderobertis.github.io/treecomp/tutorial.html">more in-depth tutorial here.</a></p>
+<p>The unidiff output from this tool is best viewed using <a class="reference external" href="https://github.com/darrenburns/dunk"><code class="docutils literal notranslate"><span class="pre">dunk</span></code></a>,
+which can also be installed via <code class="docutils literal notranslate"><span class="pre">pipx</span></code>/<code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx install dunk
+</pre></div>
+</div>
+<p>Compare two file trees recursively and output unified diffs.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>treecomp my_folder_1 my_folder_2 <span class="p">|</span> dunk
+</pre></div>
+</div>
+<p>It supports ignoring and targeting patterns with
+<a class="reference external" href="https://git-scm.com/docs/gitignore#_pattern_format"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-style syntax.</a>
+It also has a strongly-typed Python API.</p>
+<p>See
+<a class="reference external" href="https://nickderobertis.github.io/treecomp/index.html#examples">examples in the documentation.</a></p>
 </section>
 <section id="development-status">
 <h2 id="development-status">Development Status<a class="headerlink" href="#development-status" title="Permalink to this heading">¶</a></h2>
@@ -417,158 +403,150 @@ by adding them after <code class="docutils literal notranslate"><span class="pre
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permalink to this heading">¶</a></h2>
 <p>See the
 <a class="reference external" href="https://nickderobertis.github.io/treecomp/">documentation here.</a></p>
-<p>For more information on getting started, take a look at the tutorial and examples.</p>
+<p>For more information on getting started, take a look at the examples.</p>
 </section>
-<section id="tutorial-and-examples">
-<h2 id="tutorial-and-examples">Tutorial and Examples<a class="headerlink" href="#tutorial-and-examples" title="Permalink to this heading">¶</a></h2>
-<p>Ignore files with comma-separated gitignore-style syntax:</p>
+<section id="examples">
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<section id="cli">
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permalink to this heading">¶</a></h3>
+<p>Ignore files with comma-separated <a class="reference external" href="https://git-scm.com/docs/gitignore#_pattern_format"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-style syntax</a>:</p>
 <pre class="terminhtml">
-    <span data-ty="" data-ty-delay="119">$ treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -i directory,*.png | dunk</span>
-<span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi34">1</span><span class="ansi34"> file changed</span>                                 </span>
+    <span data-ty="" data-ty-delay="134">$ treecomp file_trees/one file_trees/two -i code,*.png | dunk</span>
 <span data-ty="" data-ty-delay="0">                                  <span class="ansi1 ansi32">1</span><span class="ansi32"> file added</span>                                  </span>
 <span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi31">1</span><span class="ansi31"> file removed</span>                                 </span>
-<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+3 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-3</span>                             </span>
+<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+5 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-5</span>                             </span>
 <span data-ty="" data-ty-delay="0"></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/one/b.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">2</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/one/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">5</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="62"><span class="ansi38-237">▁▁▁▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">tests/input_files/file_trees/two/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">2</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">C</span><span class="ansi48-59">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
+<span data-ty="" data-ty-delay="69"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">file_trees/two/d.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">5</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">a text file in two only</span><span class="ansi48-59">             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">lorem ipsum dolor sit amet, consecte</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi48-59">sed do eiusmod tempor incididunt ut </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">4 </span><span class="ansi48-59">Ut enim ad minim veniam, quis nostru</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">5 </span><span class="ansi48-59">nisi ut aliquip ex ea commodo conseq</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/a.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">2 </span><span class="ansi48-59">one</span><span class="ansi48-59">                                 </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="19">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
+<span data-ty="" data-ty-delay="17">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
 <span data-ty="" data-ty-delay="0"></span>
-</pre><p>Target files with the same comma-separated gitignore-style syntax:</p>
+</pre><p>Target files with the same comma-separated <a class="reference external" href="https://git-scm.com/docs/gitignore#_pattern_format"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-style syntax</a>:</p>
 <pre class="terminhtml">
-    <span data-ty="" data-ty-delay="119">$ treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -t *.txt,diff-image.png | dunk</span>
-<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi34">3</span><span class="ansi34"> files changed</span>                                 </span>
-<span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi32">2</span><span class="ansi32"> files added</span>                                  </span>
-<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi31">2</span><span class="ansi31"> files removed</span>                                 </span>
-<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+6 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-6</span>                             </span>
+    <span data-ty="" data-ty-delay="134">$ treecomp file_trees/one file_trees/two -t *.py,image-two-only.png | dunk</span>
+<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi34">2</span><span class="ansi34"> files changed</span>                                 </span>
+<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+1 </span><span class="ansi32">━━━━━━━━</span><span class="ansi31">╺</span><span class="ansi31">━━━━━━━</span> <span class="ansi1 ansi31">-1</span>                             </span>
 <span data-ty="" data-ty-delay="0"></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/one/b.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">2</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/image-two-only.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="63"><span class="ansi38-237">▁▁▁▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">tests/input_files/file_trees/two/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">2</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">C</span><span class="ansi48-59">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/a.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">A</span><span class="ansi48-235">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">2 </span><span class="ansi48-59">one</span><span class="ansi48-59">                                 </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/diff-image.png</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi34"> File is binary · 441147 bytes </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi34"> File is binary · 11352 bytes </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/one/directory/e.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">2</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="38"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/a.py</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-222 ansi48-59">o</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span></span>
 <span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁ </span><span class="ansi1 ansi32">Added </span><span class="ansi1">tests/input_files/file_trees/two/directory/f.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">2</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">0</span><span class="ansi31"> remo…</span><span class="ansi38-237"> ▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-0</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">0</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi48-59">F</span><span class="ansi48-59">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi48-16">                                        </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁ </span><span class="ansi1">tests/input_files/file_trees/two/directory/d.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">D</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">D</span><span class="ansi48-235">                                   </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">2 </span><span class="ansi48-59">one</span><span class="ansi48-59">                                 </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">2 </span><span class="ansi48-59">two</span><span class="ansi48-59">                                 </span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
-<span data-ty="" data-ty-delay="20">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
+<span data-ty="" data-ty-delay="11">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
 <span data-ty="" data-ty-delay="0"></span>
-</pre><p>Output to JSON for use with <code class="docutils literal notranslate"><span class="pre">jq</span></code> and other tools:</p>
+</pre><p>Output to JSON for use with <a class="reference external" href="https://stedolan.github.io/jq/"><code class="docutils literal notranslate"><span class="pre">jq</span></code></a> and other tools. Here, we select
+the relative path of all the files that differ:</p>
 <pre class="terminhtml">
-    <span data-ty="" data-ty-delay="157">$ treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -f json | jq '.[].path'</span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"b.txt"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"image-one-only.png"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"image-two-only.png"</span></span>
+    <span data-ty="" data-ty-delay="110">$ treecomp file_trees/one file_trees/two -f json | jq '.[].path'</span>
 <span data-ty="" data-ty-delay="0"><span class="ansi32">"c.txt"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"a.txt"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"diff-image.png"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"directory/e.txt"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"directory/f.txt"</span></span>
-<span data-ty="" data-ty-delay="0"><span class="ansi32">"directory/d.txt"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"d.txt"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"image-two-only.png"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/a.py"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/b.js"</span></span>
+<span data-ty="" data-ty-delay="8"><span class="ansi32">"code/subdir/e.ts"</span></span>
 <span data-ty="" data-ty-delay="0"></span>
-</pre><p><a class="reference external" href="https://codecov.io/gh/nickderobertis/treecomp"><img alt="" src="https://codecov.io/gh/nickderobertis/treecomp/branch/main/graph/badge.svg"/></a>
-<a class="reference external" href="https://pypi.org/project/treecomp/"><img alt="PyPI" src="https://img.shields.io/pypi/v/treecomp"/></a>
-<img alt="PyPI - License" src="https://img.shields.io/pypi/l/treecomp"/>
-<a class="reference external" href="https://nickderobertis.github.io/treecomp/"><img alt="Documentation" src="https://img.shields.io/badge/documentation-pass-green"/></a>
-<img alt="Tests Run on Ubuntu Python Versions" src="https://img.shields.io/badge/Tests%20Ubuntu%2FPython-3.8%20%7C%203.9%20%7C%203.10-blue"/>
-<img alt="Tests Run on Macos Python Versions" src="https://img.shields.io/badge/Tests%20Macos%2FPython-3.8%20%7C%203.9%20%7C%203.10-blue"/>
-<img alt="Tests Run on Windows Python Versions" src="https://img.shields.io/badge/Tests%20Windows%2FPython-3.8%20%7C%203.9%20%7C%203.10-blue"/>
-<a class="reference external" href="https://github.com/nickderobertis/treecomp/"><img alt="Github Repo" src="https://img.shields.io/badge/repo-github-informational"/></a></p>
-</section>
-</section>
-<section id="id1">
-<h1 id="id1">treecomp<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
-<section id="id2">
-<h2 id="id2">Overview<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
-<p>Compare directory trees and output unified diff</p>
-</section>
-<section id="id3">
-<h2 id="id3">Getting Started<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">treecomp</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">treecomp</span>
-</pre></div>
-</div>
-<p>A simple example:</p>
+</pre><p>We could also use <code class="docutils literal notranslate"><span class="pre">jq</span></code> to select the files that differ and exist
+in the left directory (use <code class="docutils literal notranslate"><span class="pre">right</span></code> to to do same with right directory):</p>
+<pre class="terminhtml">
+    <span data-ty="" data-ty-delay="109">$ treecomp file_trees/one file_trees/two -f json | jq '.[] | select(.left) | .path'</span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"c.txt"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/b.js"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/a.py"</span></span>
+<span data-ty="" data-ty-delay="7"><span class="ansi32">"code/subdir/e.ts"</span></span>
+<span data-ty="" data-ty-delay="0"></span>
+<span data-ty="" data-ty-delay="110">$ treecomp file_trees/one file_trees/two -f json | jq '.[] | select(.right) | .path'</span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"image-two-only.png"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"d.txt"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/a.py"</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi32">"code/b.js"</span></span>
+<span data-ty="" data-ty-delay="7"><span class="ansi32">"code/subdir/e.ts"</span></span>
+<span data-ty="" data-ty-delay="0"></span>
+</pre><p>There are fancier operations you can do with <code class="docutils literal notranslate"><span class="pre">jq</span></code>, such as determining
+which folders have diffs:</p>
+<pre class="terminhtml">
+    <span data-ty="" data-ty-delay="118">$ treecomp file_trees/one file_trees/two -f json | jq -s '.[] | map(select(.left).path | split("/")) | map(.[:-1]) | map("./" +  (. | join("/"))) | unique'</span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1">[</span></span>
+<span data-ty="" data-ty-delay="0">  <span class="ansi32">"./"</span><span class="ansi1">,</span></span>
+<span data-ty="" data-ty-delay="0">  <span class="ansi32">"./code"</span><span class="ansi1">,</span></span>
+<span data-ty="" data-ty-delay="0">  <span class="ansi32">"./code/subdir"</span><span class="ansi1"></span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1">]</span></span>
+<span data-ty="" data-ty-delay="0"></span>
+</pre><p>You can even use <code class="docutils literal notranslate"><span class="pre">jq</span></code> to select the diffs you want and then pipe the
+diffs back to <code class="docutils literal notranslate"><span class="pre">dunk</span></code> for display, here again selecting only diffs
+that exist in the left directory:</p>
+<pre class="terminhtml">
+    <span data-ty="" data-ty-delay="152">$ treecomp file_trees/one file_trees/two -f json | jq -sr '.[] | map(select(.left).diff) | join("\n")' | dunk</span>
+<span data-ty="" data-ty-delay="0">                                <span class="ansi1 ansi34">3</span><span class="ansi34"> files changed</span>                                 </span>
+<span data-ty="" data-ty-delay="0">                                 <span class="ansi1 ansi31">1</span><span class="ansi31"> file removed</span>                                 </span>
+<span data-ty="" data-ty-delay="0">                             <span class="ansi1 ansi32">+3 </span><span class="ansi32">━━━━</span><span class="ansi32">╸</span><span class="ansi31">━━━━━━━━━━━</span> <span class="ansi1 ansi31">-8</span>                             </span>
+<span data-ty="" data-ty-delay="0"></span>
+<span data-ty="" data-ty-delay="1"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/one/c.txt</span> <span class="ansi1">(</span><span class="ansi1 ansi32">0</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">5</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span> <span class="ansi31">File was removed </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="38"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/a.py</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">5</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi38-117 ansi48-235">def</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">a</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">:</span><span class="ansi48-235">                            </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi2 ansi38-102 ansi48-59">│   </span><span class="ansi38-222 ansi48-59">This is a docstring for a in </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-222 ansi48-59">o</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-222 ansi48-235">"""</span><span class="ansi48-235">                             </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">│   </span><span class="ansi38-231 ansi48-235">print</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-222 ansi48-235">a</span><span class="ansi38-222 ansi48-235">"</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi48-235">                      </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="19"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/b.js</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">6</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">6</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">1 </span><span class="ansi48-235">                                    </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-102 ansi48-235">// This is the documentation</span><span class="ansi48-235">        </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-102 ansi48-235">// This is the documentation</span><span class="ansi48-235">        </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">3 </span><span class="ansi38-102 ansi48-59">// for b in o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi48-59">                     </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">3 </span><span class="ansi38-102 ansi48-59">// for b in </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-102 ansi48-59">o</span><span class="ansi48-59">                     </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi38-117 ansi48-235">function</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">b</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-231 ansi48-235">{</span><span class="ansi48-235">                      </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">4 </span><span class="ansi38-117 ansi48-235">function</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">b</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-231 ansi48-235">{</span><span class="ansi48-235">                      </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">  </span><span class="ansi38-149 ansi48-235">console</span><span class="ansi38-231 ansi48-235">.</span><span class="ansi38-149 ansi48-235">log</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">'b'</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">;</span><span class="ansi48-235">                 </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">5 </span><span class="ansi2 ansi38-102 ansi48-235">  </span><span class="ansi38-149 ansi48-235">console</span><span class="ansi38-231 ansi48-235">.</span><span class="ansi38-149 ansi48-235">log</span><span class="ansi38-231 ansi48-235">(</span><span class="ansi38-222 ansi48-235">'b'</span><span class="ansi38-231 ansi48-235">)</span><span class="ansi38-231 ansi48-235">;</span><span class="ansi48-235">                 </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">6 </span><span class="ansi38-231 ansi48-235">}</span><span class="ansi48-235">                                   </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">6 </span><span class="ansi38-231 ansi48-235">}</span><span class="ansi48-235">                                   </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="14"><span class="ansi38-237">▁▁▁▁▁▁▁▁▁▁ </span><span class="ansi1">file_trees/two/code/subdir/e.ts</span> <span class="ansi1">(</span><span class="ansi1 ansi32">1</span><span class="ansi32"> additions</span>, <span class="ansi1 ansi31">1</span><span class="ansi31"> removals</span><span class="ansi1">)</span><span class="ansi38-237"> ▁▁▁▁▁▁▁▁▁▁▁</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-235 ansi48-16">╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲ </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi2 ansi31 ansi48-16">-1</span><span class="ansi2 ansi31 ansi48-16">,</span><span class="ansi2 ansi31 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi32 ansi48-16">+</span><span class="ansi2 ansi32 ansi48-16">1</span><span class="ansi2 ansi32 ansi48-16">,</span><span class="ansi2 ansi32 ansi48-16">2</span><span class="ansi2 ansi48-16"> </span><span class="ansi2 ansi48-16">@@ </span><span class="ansi38-235 ansi48-16"> ╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲╲</span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-181 ansi48-59">1 </span><span class="ansi38-102 ansi48-59">// Defined in folder o</span><span class="ansi38-188 ansi48-88">ne</span><span class="ansi48-59">            </span><span class="ansi1 ansi38-253 ansi48-59">  </span><span class="ansi38-151 ansi48-59">1 </span><span class="ansi38-102 ansi48-59">// Defined in folder </span><span class="ansi38-188 ansi48-28">tw</span><span class="ansi38-102 ansi48-59">o</span><span class="ansi48-59">            </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-117 ansi48-235">type</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">EType</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-204 ansi48-235">=</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-222 ansi48-235">"E"</span><span class="ansi48-235">                    </span><span class="ansi1 ansi38-253 ansi48-235">  </span><span class="ansi38-241 ansi48-235">2 </span><span class="ansi38-117 ansi48-235">type</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-149 ansi48-235">EType</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-204 ansi48-235">=</span><span class="ansi38-231 ansi48-235"> </span><span class="ansi38-222 ansi48-235">"E"</span><span class="ansi48-235">                    </span></span>
+<span data-ty="" data-ty-delay="0"><span class="ansi38-237">▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔</span></span>
+<span data-ty="" data-ty-delay="11">                                                             <span class="ansi34">/</span><span class="ansi31">/</span><span class="ansi32">/</span> <span class="ansi2">dunk </span><span class="ansi2 ansi36">0.4</span><span class="ansi2">.0a0</span>   </span>
+<span data-ty="" data-ty-delay="0"></span>
+</pre></section>
+<section id="python-api">
+<h3 id="python-api">Python API<a class="headerlink" href="#python-api" title="Permalink to this heading">¶</a></h3>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">treecomp</span></code> as a Python module, with a very similar API:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">treecomp</span>
 
-<span class="c1"># Do something with treecomp</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">treecomp</span><span class="o">.</span><span class="n">diff_file_trees</span><span class="p">(</span>
+    <span class="s2">"file_trees/one"</span><span class="p">,</span> 
+    <span class="s2">"file_trees/two"</span><span class="p">,</span> 
+    <span class="n">ignore</span><span class="o">=</span><span class="p">[</span><span class="s2">"subdir"</span><span class="p">],</span> 
+    <span class="n">target</span><span class="o">=</span><span class="p">[</span><span class="s2">"*.py"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">),</span> <span class="s2">"diffs in total"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">diff</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Files with diffs that exist in left:"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">diff</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See a
-<a class="reference external" href="https://nickderobertis.github.io/treecomp/tutorial.html">more in-depth tutorial here.</a></p>
 </section>
-<section id="id4">
-<h2 id="id4">Development Status<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
-<p>This project is currently in early-stage development. There may be
-breaking changes often. While the major version is 0, minor version
-upgrades will often have breaking changes.</p>
-</section>
-<section id="id5">
-<h2 id="id5">Developing<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h2>
-<p>First ensure that you have <code class="docutils literal notranslate"><span class="pre">pipx</span></code> installed, if not, install it with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pipx</span></code>.</p>
-<p>Then clone the repo and run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> and <code class="docutils literal notranslate"><span class="pre">pipenv</span> <span class="pre">sync</span></code>. Run <code class="docutils literal notranslate"><span class="pre">pipenv</span> <span class="pre">shell</span></code>
-to use the virtual environment. Make your changes and then run <code class="docutils literal notranslate"><span class="pre">nox</span></code> to run formatting,
-linting, and tests.</p>
-<p>Develop documentation by running <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">docs</span></code> to start up a dev server.</p>
-<p>To run tests only, run <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">test</span></code>. You can pass additional arguments to pytest
-by adding them after <code class="docutils literal notranslate"><span class="pre">--</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">test</span> <span class="pre">--</span> <span class="pre">-k</span> <span class="pre">test_something</span></code>.</p>
-</section>
-<section id="id6">
-<h2 id="id6">Author<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h2>
-<p>Created by Nick DeRobertis. MIT License.</p>
-</section>
-<section id="id7">
-<h2 id="id7">Links<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h2>
-<p>See the
-<a class="reference external" href="https://nickderobertis.github.io/treecomp/">documentation here.</a></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Getting started with treecomp</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#usage">Usage</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">This is my gallery</a></li>
-</ul>
-</div>
 </section>
 <section id="api-documentation">
 <h2 id="api-documentation">API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading">¶</a></h2>
@@ -612,12 +590,12 @@ by adding them after <code class="docutils literal notranslate"><span class="pre
       <nav class="md-footer-nav__inner md-grid">
           
           
-            <a href="tutorial.html" title="Getting started with treecomp"
+            <a href="api/modules.html" title="treecomp"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Getting started with treecomp </span>
+                class="md-footer-nav__direction"> Next </span> treecomp </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
