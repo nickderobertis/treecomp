@@ -9,7 +9,7 @@
 ---
 cwd: ..
 ---
-treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two | dunk
+treecomp file_trees/one file_trees/two | dunk
 ```
 
 ```{include} ../../README.md
@@ -25,7 +25,7 @@ Ignore files with comma-separated gitignore-style syntax:
 ---
 cwd: ..
 ---
-treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -i directory,*.png | dunk
+treecomp file_trees/one file_trees/two -i code,*.png | dunk
 ```
 
 Target files with the same comma-separated gitignore-style syntax:
@@ -34,17 +34,51 @@ Target files with the same comma-separated gitignore-style syntax:
 ---
 cwd: ..
 ---
-treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -t *.txt,diff-image.png | dunk
+treecomp file_trees/one file_trees/two -t *.py,image-two-only.png | dunk
 ```
 
-Output to JSON for use with `jq` and other tools:
+Output to JSON for use with `jq` and other tools. Here, we select 
+the relative path of all the files that differ:
 
 ```{terminhtml}
 ---
 cwd: ..
 ---
-treecomp tests/input_files/file_trees/one tests/input_files/file_trees/two -f json | jq '.[].path'
+treecomp file_trees/one file_trees/two -f json | jq '.[].path'
 ```
+
+We could also use `jq` to select the files that differ and exist 
+in the left directory (use `right` to to do same with right directory):
+
+```{terminhtml}
+---
+cwd: ..
+---
+treecomp file_trees/one file_trees/two -f json | jq '.[] | select(.left) | .path'
+treecomp file_trees/one file_trees/two -f json | jq '.[] | select(.right) | .path'
+```
+
+There are fancier operations you can do with `jq`, such as determining 
+which folders have diffs:
+
+```{terminhtml}
+---
+cwd: ..
+---
+treecomp file_trees/one file_trees/two -f json | jq -s '.[] | map(select(.left).path | split("/")) | map(.[:-1]) | map("./" +  (. | join("/"))) | unique'
+```
+
+You can even use `jq` to select the diffs you want and then pipe the 
+diffs back to `dunk` for display, here again selecting only diffs 
+that exist in the left directory:
+
+```{terminhtml}
+---
+cwd: ..
+---
+treecomp file_trees/one file_trees/two -f json | jq -sr '.[] | map(select(.left).diff) | join("\n")' | dunk
+```
+
 
 ```{toctree}
 
