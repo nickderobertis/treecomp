@@ -13,6 +13,7 @@ runs:
         sudo apt-get install pandoc -y
         sudo apt-get install jq -y
         pipx install dunk
+        pipx install treecomp
     - name: Build Documentation
       shell: bash
       run: |
