@@ -19,9 +19,9 @@ from treecomp.unidiff import (
 @dataclass(frozen=True)
 class FileDiff:
     path: Path
-    exists_in_dir1: bool
-    exists_in_dir2: bool
-    line_diff: str
+    left: bool
+    right: bool
+    diff: str
 
     def dict(self) -> dict:
         raw = self.__dict__
@@ -64,7 +64,7 @@ class FileTreeComparison:
     diffs: List[FileDiff]
 
     def __str__(self) -> str:
-        return "\n".join(diff.line_diff for diff in self.diffs)
+        return "\n".join(diff.diff for diff in self.diffs)
 
     def __iter__(self) -> Iterator[FileDiff]:
         return iter(self.diffs)
@@ -167,9 +167,9 @@ def _diff_file_trees(
             [
                 FileDiff(
                     path=relative_root / file,
-                    exists_in_dir1=True,
-                    exists_in_dir2=False,
-                    line_diff=_create_unified_diff_of_file_removed(dir1 / file),
+                    left=True,
+                    right=False,
+                    diff=_create_unified_diff_of_file_removed(dir1 / file),
                 )
                 for file in left_only
                 if (dir1 / file).is_file()
@@ -180,9 +180,9 @@ def _diff_file_trees(
             [
                 FileDiff(
                     path=relative_root / file,
-                    exists_in_dir1=False,
-                    exists_in_dir2=True,
-                    line_diff=_create_unified_diff_of_file_added(dir2 / file),
+                    left=False,
+                    right=True,
+                    diff=_create_unified_diff_of_file_added(dir2 / file),
                 )
                 for file in right_only
                 if (dir2 / file).is_file()
@@ -198,9 +198,9 @@ def _diff_file_trees(
             file_diffs.append(
                 FileDiff(
                     path=relative_root / file,
-                    exists_in_dir1=True,
-                    exists_in_dir2=True,
-                    line_diff=diff,
+                    left=True,
+                    right=True,
+                    diff=diff,
                 )
             )
 
@@ -209,9 +209,9 @@ def _diff_file_trees(
             [
                 FileDiff(
                     path=relative_root / file,
-                    exists_in_dir1=True,
-                    exists_in_dir2=True,
-                    line_diff=_create_unified_diff_of_binary_files(
+                    left=True,
+                    right=True,
+                    diff=_create_unified_diff_of_binary_files(
                         str(dir2 / file), str(dir2 / file)
                     ),
                 )
