@@ -30,6 +30,7 @@ github:
 	@./binder_requirements.sh
 	@./nb-examples.sh
 	@./download-logo.sh
+	@./create-readme-gif.sh
 	@make doctest
 	@make autodoc
 	@make html

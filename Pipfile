@@ -25,3 +25,7 @@ flake8 = "*"
 typer = "*"
 pathspec = "*"
 sphinx-terminhtml = "*"
+terminhtml-recorder = "*"
+
+[pipenv]
+allow_prereleases = true

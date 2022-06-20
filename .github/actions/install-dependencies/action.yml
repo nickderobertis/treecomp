@@ -28,3 +28,7 @@ runs:
       shell: bash
       run: |
         pip install -r lint-requirements.txt
+    - name: Install Playwright Chromium
+      shell: bash
+      run: |
+          pipenv run playwright install chromium
