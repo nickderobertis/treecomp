@@ -11,9 +11,13 @@ runs:
       shell: bash
       run: |
         sudo apt-get install pandoc -y
-        sudo apt-get install jq -y
+        sudo apt-get install jq gifsicle -y
         pipx install dunk
         pipx install treecomp
+    - name: Install Playwright Chromium
+      shell: bash
+      run: |
+        pipenv run playwright install chromium
     - name: Build Documentation
       shell: bash
       run: |
