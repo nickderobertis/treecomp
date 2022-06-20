@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install && pipx install black || true && pipx install isort || true && pipx install autoflake || true"
+    "prepare": "husky install && cat global-requirements.txt | xargs -n1 pipx install || true"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,10 @@
     "lint-staged": "^12.4.1"
   },
   "lint-staged": {
-    "*.py": "pipenv run nox -s format_files -- "
+    "*.py": [
+      "pipenv run nox -s format_files -- ",
+      "pipenv run nox -s strip --non-interactive -- "
+    ],
+    "*-requirements.in": "pip-compile --upgrade --generate-hashes"
   }
 }
