@@ -1,8 +1,6 @@
 import os
 import time
-from pathlib import Path
 
-import terminhtml_recorder.recorder
 from terminhtml_recorder import OutputFormat, PageLocators, default_page_interactor
 from terminhtml_recorder.cli import record
 

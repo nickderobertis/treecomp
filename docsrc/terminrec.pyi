@@ -3,11 +3,7 @@ from typing import Callable, Optional
 
 import terminhtml_recorder.recorder
 from pydantic import BaseModel
-from terminhtml_recorder import (
-    OutputFormat,
-    PageLocators,
-    default_page_interactor,
-)
+from terminhtml_recorder import OutputFormat, PageLocators, default_page_interactor
 from terminhtml_recorder.cli import record
 
 class RecordConfig(BaseModel):
