@@ -10,7 +10,9 @@ class RecordConfig(BaseModel):
     in_path: Optional[Path] = None
     out_path: Optional[Path] = None
     output_format: Optional[OutputFormat] = OutputFormat.GIF
-    delay: Optional[float] = 1.1
+    begin_after: Optional[float] = 1.1
+    resize: Optional[float] = 0.7
+    fps: Optional[int] = 10
     interactor: Optional[
         Callable[[terminhtml_recorder.recorder.PageLocators], None]
     ] = default_page_interactor

@@ -20,6 +20,8 @@ config = RecordConfig(
     in_path=None,
     out_path=None,
     output_format=OutputFormat.GIF,
-    delay=1.1,
+    begin_after=1.1,
+    resize=0.7,
+    fps=7,
     interactor=page_interactor,
 )
