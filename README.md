@@ -36,13 +36,13 @@ The recommended way to install `treecomp` is with [`pipx`](https://github.com/py
 though it can also be installed with `pip`.
 
 ```
-pipx install flexlate
+pipx install treecomp
 ```
 
 Or, if you don't have/don't want to install `pipx`:
 
 ```
-pip install flexlate
+pip install treecomp
 ```
 
 The unidiff output from this tool is best viewed using [`dunk`](https://github.com/darrenburns/dunk), 
