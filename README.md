@@ -18,7 +18,7 @@
       <img src="https://nickderobertis.github.io/treecomp/_static/images/treecomp-recording.gif" alt="treecomp example GIF">
     </a>
   </p>
-  <sub>This GIF doesn't do treecomp justice, check out the examples <a href="https://nickderobertis.github.io/treecomp/">in the docs</a></sub>
+  <sub>This GIF doesn't do treecomp justice, check out the <a href="https://nickderobertis.github.io/treecomp/#examples">examples</a></sub>
 </div>
 
 
